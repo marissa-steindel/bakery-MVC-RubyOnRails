@@ -64,9 +64,27 @@ end
 #   puts "#{customer.name} from #{customer.province.name} created"
 # end
 
-# SEED categories
-categories = ["loaf", "sweet", "savoury", "pastry", "cookie", "cake", "muffin", "bun", "flatbread"]
+# # SEED categories
+# categories = ["loaf", "sweet", "savoury", "pastry", "cookie", "cake", "muffin", "bun", "flatbread"]
 
-categories.each do |c|
-  new_cat = Category.create(name: c)
+# categories.each do |c|
+#   new_cat = Category.create(name: c)
+# end
+
+# SEED PRODUCTS
+# # product_csv_file = Rails.root.join("db/products.csv")
+# # product_csv_data = File.read(csv_file)
+# # product_csv_data = CSV.parse(csv_data, headers: true)
+product_csv_data =  CSV.parse(File.read(Rails.root.join("db/products.csv")), headers: true)
+
+product_csv_data.each do |p|
+    puts p["name"]
+    puts p["price"]
+    puts p["description"]
+
+  new_prod = Product.create(
+    name:         p["name"],
+    price:        p["price"].to_i,
+    description:  p["description"]
+  )
 end

@@ -9,7 +9,7 @@
 
   <p>
     <strong>Price:</strong>
-    <%= product.price %>
+    <%= number_to_currency product.price.to_i/100.0 %>
   </p>
 
 </div>

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root "customers#index"
   resources :customers
   resources :provinces
+  resources :categories
 end
 
 

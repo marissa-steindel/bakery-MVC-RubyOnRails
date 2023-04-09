@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root "provinces#index"
+  root "customers#index"
+  resources :customers
   resources :provinces
 end
 

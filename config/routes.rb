@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :customers
   resources :provinces
   resources :categories
+  resources :products
 end
 
 

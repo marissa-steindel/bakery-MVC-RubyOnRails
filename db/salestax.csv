@@ -1,0 +1,14 @@
+province,code,PST,GST,HST
+British Columbia,BC,7,5,null
+Alberta,AB,null,5,null
+Saskatchewan,SK,6,5,null
+Manitoba,MB,7,5,null
+Ontario,ON,null,null,13
+Quebec,QC,9.975,5,null
+Nova Scotia,NS,null,null,15
+Newfoundland,NL,null,null,15
+New Brunswick,NB,null,null,15
+Prince Edward Island,PE,null,null,15
+Yukon,YT,null,5,null
+Northwest Territories,NT,null,5,null
+Nunavut,NU,null,5,null

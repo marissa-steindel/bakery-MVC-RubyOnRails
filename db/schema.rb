@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_09_165414) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_09_171013) do
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -33,6 +33,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_09_165414) do
     t.index ["province_id"], name: "index_customers_on_province_id"
   end
 
+  create_table "customers_orders", id: false, force: :cascade do |t|
+    t.integer "customer_id", null: false
+    t.integer "order_id", null: false
+    t.decimal "GST"
+    t.decimal "PST"
+    t.decimal "HST"
+  end
+
   create_table "orders", force: :cascade do |t|
     t.integer "customer_id", null: false
     t.string "payment_id"
@@ -40,6 +48,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_09_165414) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["customer_id"], name: "index_orders_on_customer_id"
+  end
+
+  create_table "orders_products", id: false, force: :cascade do |t|
+    t.integer "order_id", null: false
+    t.integer "product_id", null: false
+    t.integer "qty"
+    t.integer "price"
   end
 
   create_table "products", force: :cascade do |t|

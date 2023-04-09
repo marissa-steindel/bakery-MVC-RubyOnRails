@@ -36,9 +36,9 @@
       <%= form.label :province_id, "Province", class: "label" %>
       <div class="select">
         <% if purpose == "update"%>
-          <%= form.select :province_id, options_from_collection_for_select(Province.all, 'id', 'code', customer.province), include_blank: "#{customer.province.code}"%>
+          <%= form.select :province_id, options_from_collection_for_select(Province.all, 'id', 'code', customer.province.id)%>
         <% elsif purpose == "create" %>
-          <%= form.select :province_id, options_from_collection_for_select(Province.all, 'id', 'code'), include_blank: "select province"%>
+          <%= form.select :province_id, options_from_collection_for_select(Province.all, 'id', 'code'), prompt: "select province" %>
         <% end %>
       </div>
     </div>

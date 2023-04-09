@@ -1,14 +1,40 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Provinces</h1>
+<h1 class="title is-3">Province Collection</h1>
 
 <div id="provinces">
-  <% @provinces.each do |province| %>
-    <%= render province %>
-    <p>
-      <%= link_to "Show this province", province %>
-    </p>
-  <% end %>
+  <table class="table is-striped">
+    <tr>
+      <th>Province</th>
+      <th>GST</th>
+      <th>PST</th>
+      <th>HST</th>
+    </tr>
+    <% @provinces.each do |p|%>
+      <tr>
+        <td><%= link_to p.name, p %></td>
+        <td>
+          <% unless p.GST == 0 %>
+            <p><%= p.GST.to_i %>%</p>
+          <%else%>
+            <p>-</p>
+          <% end %>
+        </td>
+        <td>
+          <% unless p.PST.nil? || p.PST == 0 %>
+            <p><%= p.PST.to_i %>%</p>
+          <%else%>
+            <p>-</p>
+          <% end %>
+        </td>
+        <td>
+          <% unless p.HST.nil? || p.HST == 0 %>
+            <p><%= p.HST.to_i %>%</p>
+          <%else%>
+            <p>-</p>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
 </div>
-
-<%= link_to "New province", new_province_path %>

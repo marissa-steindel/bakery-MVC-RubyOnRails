@@ -1,10 +1,22 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @province %>
+<h1 class="title is-3">Province Member</h1>
 
-<div>
-  <%= link_to "Edit this province", edit_province_path(@province) %> |
-  <%= link_to "Back to provinces", provinces_path %>
+<h2 class="title is-5"><%= @province.name%></h2>
 
-  <%= button_to "Destroy this province", @province, method: :delete %>
-</div>
+<% unless @province.GST.nil? || @province.GST == 0 %>
+  <p>GST: <%= @province.GST.to_i %>%</p>
+<% end %>
+  <% unless @province.PST.nil? || @province.PST == 0 %>
+  <p>PST: <%= @province.PST.to_i %>%</p>
+<% end %>
+  <% unless @province.HST.nil? || @province.HST == 0 %>
+  <p>HST: <%= @province.HST.to_i %>%</p>
+<% end %>
+
+<br>
+<%= link_to "Edit", edit_province_path(@province), class:"button" %>
+<br>
+<br>
+<%= link_to "Back to Province Index", provinces_path %>
+

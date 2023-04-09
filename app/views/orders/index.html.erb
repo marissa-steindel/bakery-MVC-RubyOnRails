@@ -1,14 +1,34 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Orders</h1>
+<h1 class="title">Orders</h1>
 
-<div id="orders">
-  <% @orders.each do |order| %>
-    <%= render order %>
-    <p>
-      <%= link_to "Show this order", order %>
-    </p>
-  <% end %>
-</div>
+<%= link_to "New order", new_order_path, class:"button" %>
 
-<%= link_to "New order", new_order_path %>
+<table class="table is-striped">
+<tr>
+  <th>Invoice No.</th>
+  <th>Status</th>
+  <th>Transaction Date</th>
+  <th>Payment ID</th>
+  <th>Customer</th>
+  <th>GST</th>
+  <th>HST</th>
+  <th>PST</th>
+  <th>Grand Total</th>
+</tr>
+  <% @orders.each do |o|%>
+    <tr>
+      <td><%=link_to o.id, order_path(o.id)%></td>
+      <td><%= select_tag(:status, options_for_select(%w[Pending Paid Shipped], o.status))%> </td>
+      <td><%= o.created_at.strftime('%m/%d/%Y %H:%M') %></td>
+      <td><%= o.payment_id %></td>
+      <td><%= link_to o.customer.name, o.customer %></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><%# number_to_currency rand(9999)/100.0 %></td>
+      <td> <%# button_to "update status"%> </td>
+    </tr>
+<% end %>
+
+</table>

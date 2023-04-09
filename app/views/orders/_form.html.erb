@@ -1,8 +1,8 @@
+<%= order.inspect%>
 <%= form_with(model: order) do |form| %>
+
   <% if order.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
-
       <ul>
         <% order.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,19 +11,43 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :customer_id, style: "display: block" %>
-    <%= form.text_field :customer_id %>
+  <div class="mb-3">
+    <%= form.label :customer_id, class:"label" %>
+    <div class="select">
+      <%= form.select :customer_id, options_from_collection_for_select(Customer.all, 'id', 'name'), prompt: "select customer"%>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :payment_id, style: "display: block" %>
-    <%= form.text_field :payment_id %>
+  <div class="mb-3">
+    <%= form.label :payment_id, "Invoice Number", class:"label" %>
+    <%= form.text_field :payment_id, value:rand(111111..999999), class:"input" %>
   </div>
 
-  <div>
-    <%= form.label :status, style: "display: block" %>
-    <%= form.text_field :status %>
+  <div class="mb-3">
+    <%= form.label :status, class:"label"  %>
+    <div class="select">
+      <%= form.select :status, options_for_select(%w[Pending Paid Shipped]), prompt:"select status"%>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :GST, "GST", class:"label" %>
+    <%= form.text_field :payment_id, value:"", class:"input" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :PST, "PST", class:"label" %>
+    <%= form.text_field :payment_id, value:"", class:"input" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :HST, "HST", class:"label" %>
+    <%= form.text_field :payment_id, value:"", class:"input" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :HST, "Grand Total", class:"label" %>
+    <%= form.text_field :payment_id, value:"", class:"input" %>
   </div>
 
   <div>

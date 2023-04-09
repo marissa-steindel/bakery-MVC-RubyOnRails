@@ -1,11 +1,11 @@
 <div id="<%= dom_id order %>">
   <p>
     <strong>Customer:</strong>
-    <%= order.customer_id %>
+    <%= link_to order.customer.name, order.customer %>
   </p>
 
   <p>
-    <strong>Payment:</strong>
+    <strong>Invoice Number:</strong>
     <%= order.payment_id %>
   </p>
 

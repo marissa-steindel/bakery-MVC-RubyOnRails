@@ -23,14 +23,14 @@ salestax_csv_data.each do |row|
 end
 
 
-salestax_csv_data.each do |row|
-  province = Province.create(  name:   row["province"],
-                                code:   row["code"],
-                                PST:    row["PST"],
-                                GST:    row["GST"],
-                                HST:    row["HST"]
-                            )
-end
+# salestax_csv_data.each do |row|
+#   province = Province.create(  name:   row["province"],
+#                                 code:   row["code"],
+#                                 PST:    row["PST"],
+#                                 GST:    row["GST"],
+#                                 HST:    row["HST"]
+#                             )
+# end
 
 # Province.all.each do |prov|
 #   puts "Name: #{prov.name}"
@@ -52,36 +52,21 @@ end
 
 
 
-# SEED customers and province simultaneously
-# salestax_csv_data.each do |row|
-#   province = Province.create(
-#     name:   row["province"],
-#     code:   row["code"],
-#     PST:    row["PST"],
-#     GST:    row["GST"],
-#     HST:    row["HST"]
+# # SEED customers
+# 30.times do
+#   customer = Customer.create(
+#     name: Faker::Name.name,
+#     address: Faker::Address.street_address,
+#     username: Faker::Lorem.word,
+#     password_digest: Faker::Internet.password,
+#     province: Province.find(rand(1..13))
 #   )
-#   rand(1..3).times do
-#     customer = Customer.create(
-#       name: Faker::Name.name,
-#       address: Faker::Address.street_address,
-#       username: Faker::Lorem.word,
-#       password: Faker::Internet.password,
-#       province: province
-#     )
-#     puts "#{customer.name} from #{province.name} created"
-#   end
-#   # puts seed.inspect
+#   puts "#{customer.name} from #{customer.province.name} created"
 # end
 
+# SEED categories
+categories = ["loaf", "sweet", "savoury", "pastry", "cookie", "cake", "muffin", "bun", "flatbread"]
 
-30.times do
-  customer = Customer.create(
-    name: Faker::Name.name,
-    address: Faker::Address.street_address,
-    username: Faker::Lorem.word,
-    password_digest: Faker::Internet.password,
-    province: Province.find(rand(1..13))
-  )
-  puts "#{customer.name} from #{customer.province.name} created"
+categories.each do |c|
+  new_cat = Category.create(name: c)
 end

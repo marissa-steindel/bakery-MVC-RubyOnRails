@@ -1,8 +1,9 @@
 <div id="<%= dom_id customer %>">
-  <p>
-    <strong>Name:</strong>
-    <%= customer.name %>
-  </p>
+
+  <div class="block">
+    <br>
+    <p class="title is-5"><%= customer.name %></p>
+  </div>
 
   <p>
     <strong>Username:</strong>
@@ -21,7 +22,7 @@
 
   <p>
     <strong>Province:</strong>
-    <%= customer.province_id %>
+    <%= customer.province.name %>
   </p>
 
 </div>

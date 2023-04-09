@@ -1,6 +1,37 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Customers</h1>
+<h1 class="title">Customers Index</h1>
+
+  <div class="block">
+    <p class="button"><%= link_to "Add New Customer", new_customer_path %> </p>
+    <p class="mt-3">There are <strong><%= Customer.count%></strong> customers in the database. </p>
+  </div>
+
+  <table class="table is-striped">
+  <tr>
+    <th>ID</th>
+    <th>name</th>
+    <th>address</th>
+    <th>province</th>
+    <th>username</th>
+    <th>password digest</th>
+    <th></th>
+    <th></th>
+  </tr>
+    <% @customers.each do |c|%>
+      <tr>
+        <td><%=c.id%></td>
+        <td><%=link_to c.name, customer_path(c.id)%></td>
+        <td><%=c.address%></td>
+        <td><%=c.province.name%></td>
+        <td><%=c.username %></td>
+        <td><%=c.password_digest%></td>
+        <td><%= link_to "EDIT", edit_customer_path(c.id) %></td>
+        <td><%= link_to "DELETE", customer_path(c.id), data: { turbo_method: :delete, turbo_confirm: "Delete #{c.name}?" }, class: "button is-small" %></td>
+      </tr>
+  <% end %>
+
+  </table>
 
 <div id="customers">
   <% @customers.each do |customer| %>
@@ -12,3 +43,5 @@
 </div>
 
 <%= link_to "New customer", new_customer_path %>
+
+

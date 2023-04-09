@@ -1,8 +1,8 @@
 <%= form_with(model: customer) do |form| %>
+
+  <%# display errors %>
   <% if customer.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
-
       <ul>
         <% customer.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,30 +11,37 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+  <div class="mb-3">
+    <%= form.label :name, class:"label" %>
+    <%= form.text_field :name, class:"input" %>
   </div>
 
-  <div>
-    <%= form.label :username, style: "display: block" %>
-    <%= form.text_field :username %>
+  <div class="mb-3">
+    <%= form.label :username, class:"label" %>
+    <%= form.text_field :username, class:"input" %>
   </div>
 
-  <div>
-    <%= form.label :password_digest, style: "display: block" %>
-    <%= form.text_field :password_digest %>
+  <div class="mb-3">
+    <%= form.label :password_digest, class:"label" %>
+    <%= form.text_field :password_digest, class:"input" %>
   </div>
 
-  <div>
-    <%= form.label :address, style: "display: block" %>
-    <%= form.text_field :address %>
+  <div class="mb-3">
+    <%= form.label :address, class:"label" %>
+    <%= form.text_field :address, class:"input" %>
   </div>
 
-  <div>
-    <%= form.label :province_id, style: "display: block" %>
-    <%= form.text_field :province_id %>
-  </div>
+
+    <div class="mb-6">
+      <%= form.label :province_id, "Province", class: "label" %>
+      <div class="select">
+        <% if purpose == "update"%>
+          <%= form.select :province_id, options_from_collection_for_select(Province.all, 'id', 'code', customer.province), include_blank: "#{customer.province.code}"%>
+        <% elsif purpose == "create" %>
+          <%= form.select :province_id, options_from_collection_for_select(Province.all, 'id', 'code'), include_blank: "select province"%>
+        <% end %>
+      </div>
+    </div>
 
   <div>
     <%= form.submit %>

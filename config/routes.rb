@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :orders
   root "customers#index"
   resources :customers
   resources :provinces

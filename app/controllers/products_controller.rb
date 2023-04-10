@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[ show edit update destroy ]
+  before_action :initialize_session #create empty cart array, if not already initialized
+  before_action :load_cart_variable
 
   # GET /products or /products.json
   def index
@@ -57,14 +59,67 @@ class ProductsController < ApplicationController
     end
   end
 
+
+  def add_to_cart
+    prod_key = params[:id] # is of datatype string
+
+    if session[:cart].keys.include?(prod_key)
+      session[:cart][prod_key] += 1
+    else
+      session[:cart][prod_key] = 1
+    end
+
+    # prevent rails from trying to load up a view of the same name as the action
+    redirect_to products_path
+  end
+
+  def remove_from_cart
+    prod_key = params[:id]
+    session[:cart].delete(prod_key)
+
+    redirect_to products_path
+  end
+
+  def decrement_from_cart
+    prod_key = params[:id]
+
+    if session[:cart][prod_key] == 1
+      session[:cart].delete(prod_key)
+    else
+      session[:cart][prod_key] -= 1
+    end
+
+    redirect_to products_path
+  end
+
+  def clear_cart
+    session[:cart] = Hash.new
+    redirect_to products_path
+  end
+
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_product
       @product = Product.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def product_params
       params.require(:product).permit(:name, :description, :price)
     end
+
+    def initialize_session
+      session[:cart] ||= Hash.new
+    end
+
+    def load_cart_variable
+      # loads a set of objects from the db
+      @cart_contents = Product.find(session[:cart].keys)
+      @cart_subtotal = 0
+
+      session[:cart].each do |prod_id,qty|
+        price = Product.find(prod_id.to_i).price
+        @cart_subtotal += (price*qty)/100.0
+      end
+    end
+
 end

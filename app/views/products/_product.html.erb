@@ -1,5 +1,6 @@
 <div class="" id="<%# dom_id product %>">
 
+  <%# card title %>
   <% if show_page %>
     <p class="title is-5"><%= product.name %></p>
   <% else %>
@@ -12,11 +13,20 @@
   <% end %>
   <br>
 
+  <%# product description %>
   <p><%= product.description %></p>
 
-  <p>
-    <strong>Price:</strong>
-    <%= number_to_currency product.price.to_i/100.0 %>
-  </p>
+  <%# price %>
+  <p><strong>Price:</strong><%= number_to_currency product.price.to_i/100.0 %></p>
+
+  <div class="card-content">
+    <%# buttons %>
+    <% if @cart_contents.include?(product) %>
+      <%= render partial: "qty_buttons", locals:{ product: product}%>
+      <%= button_to "remove", remove_from_cart_path(product.id), method: :delete, class:"button is-small is-danger is-outlined" %>
+    <% else %>
+      <%= button_to "add to cart", add_to_cart_path(product.id), method: :post, class:"button is-small"%>
+    <% end %>
+  </div>
 
 </div>

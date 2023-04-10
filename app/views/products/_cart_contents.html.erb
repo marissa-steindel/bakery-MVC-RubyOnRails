@@ -1,0 +1,50 @@
+<%# display cart contents %>
+<div class="block">
+  <% if @cart_contents.empty?%>
+    <p>No items in cart.</p>
+  <% else %>
+    <h3 class="title is-6 mb-3 pt-3">Shopping Cart:</h3>
+    <table class="table is-striped">
+      <tr>
+        <th></th>
+        <th>Item</th>
+        <th class="has-text-centered">QTY</th>
+        <th class="has-text-centered">Unit Price</th>
+        <th></th>
+      </tr>
+      <% @cart_contents.each do |p|%>
+        <tr>
+          <td>
+            <%# <% if p.image.present? > %>
+              <%# <%= image_tag p.image.variant(resize_to_fit: [50,50]) > %>
+            <%# <% end > %>
+          </td>
+          <td>
+            <p class="py-2"><%= p.name %></p>
+          </td>
+          <td class="has-text-centered">
+            <%= render partial: "qty_buttons", locals: {product: p} %>
+          </td>
+          <td>
+            <p class="py-2"><%= number_to_currency p.price.to_i/100.0  %></p>
+          </td>
+          <td>
+            <div class="py-2">
+              <%= button_to "x", remove_from_cart_path(p.id),class:"button is-small is-danger is-outlined", method: :delete %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+      <tr class="">
+        <td></td>
+        <td></td>
+        <td><strong class="title is-6">Subtotal:</strong></td>
+        <td><%= number_to_currency @cart_subtotal %></td>
+        <td></td>
+      </tr>
+      <%if show_taxes%>
+        <%= render "checkout/show_taxes"%>
+      <% end %>
+    </table>
+  <% end %>
+</div>

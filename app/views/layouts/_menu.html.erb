@@ -30,6 +30,12 @@
     <%= link_to "Provinces Collection", provinces_path, :class=>"navbar-item" %>
     <%= link_to "Customers Collection", customers_path, :class=>"navbar-item" %>
     <%= link_to "Orders Collection", orders_path, :class=>"navbar-item" %>
+    <div class="navbar-item has-dropdown is-hoverable">
+      <a class="navbar-link">JoinTables</a>
+      <div class="navbar-dropdown">
+        <%= link_to "ProductCategories", product_categories_path, :class=>"navbar-item" %>
+      </div>
+    </div>
 </nav>
 
 

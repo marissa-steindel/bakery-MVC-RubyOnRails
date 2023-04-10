@@ -1,14 +1,23 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Product categories</h1>
+<h1 class="title">Product Categories</h1>
 
 <div id="product_categories">
-  <% @product_categories.each do |product_category| %>
-    <%= render product_category %>
-    <p>
-      <%= link_to "Show this product category", product_category %>
-    </p>
-  <% end %>
+  <table class="table is-striped">
+    <tr>
+      <th>Product</th>
+      <th>Category</th>
+    </tr>
+    <% @product_categories.each do |pc|%>
+      <tr>
+        <td><%= link_to pc.product.name, pc.product %></td>
+        <td><%= link_to pc.category.name, pc.category %></td>
+        <td><%= button_to "Delete", pc, method: :delete %></td>
+      </tr>
+    <% end %>
+  </table>
 </div>
 
-<%= link_to "New product category", new_product_category_path %>
+<br>
+<%= render "form", product_category: @product_category %>
+

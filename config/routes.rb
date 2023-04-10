@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   delete  'decrement_from_cart/:id',  to: "products#decrement_from_cart", as: "decrement_from_cart"
   get     'clear_cart',               to: "products#clear_cart",          as: "clear_cart"
 
+  get     "login",  to: "customers#login",        as: "show_login_form"
+  post    "login",  to: "customers#authenticate", as:"authenticate"
+  delete  "logout", to: "customers#logout",       as:"logout"
+
   get "checkout", to: "checkout#index", as: "checkout"
   get "thankyou", to: "checkout#thankyou"
 

@@ -2,11 +2,24 @@
 
 <h1 class="title">Products</h1>
 
-<%= link_to "New product", new_product_path, class:"button" %>
 
 <%# display cart contents %>
 <%= render "cart_contents", show_taxes: false %>
 
+<%# display checkout button %>
+<div class="block is-flex">
+  <% unless @cart_contents.empty?%>
+    <% if session[:customer_id].nil? %>
+      <%= link_to "Checkout", show_login_form_path, class:"button mr-4 is-success is-light is-outlined" %></p>
+    <% else %>
+      <%= link_to "Checkout", checkout_path, class:"button mr-4 is-success is-light is-outlined" %></p>
+    <% end %>
+    <%= link_to "Clear Cart", clear_cart_path, class:"button is-danger is-light is-outlined" %></p>
+  <% end %>
+</div>
+
+<%# display products %>
+<%= link_to "New product", new_product_path, class:"button" %>
 <div class="columns is-multiline" id="products">
   <% @products.each do |product| %>
     <div class="column is-3 card mx-5 my-5">
@@ -16,4 +29,3 @@
     </div>
   <% end %>
 </div>
-

@@ -23,13 +23,3 @@
   <%= link_to "Place Order", thankyou_path, class:"button mr-4 is-success is-light is-outlined" %></p>
   <%= link_to "Clear Cart", clear_cart_path, class:"button is-danger is-light is-outlined" %></p>
 </div>
-
-
-<%# <div class="block">
-  <p>Select Province to apply tax:</p>
-   <nav class="navbar">
-    <% Province.all.each do |p| >
-      <%= link_to p.name, determine_tax_path(p.id), :class=>"navbar-item" >
-    <% end >
-   </nav>
-</div> %>

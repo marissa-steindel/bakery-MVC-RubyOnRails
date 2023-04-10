@@ -23,7 +23,7 @@
             <p class="py-2"><%= p.name %></p>
           </td>
           <td class="has-text-centered">
-            <%= render partial: "qty_buttons", locals: {product: p} %>
+            <%= render partial: "products/qty_buttons", locals: {product: p} %>
           </td>
           <td>
             <p class="py-2"><%= number_to_currency p.price.to_i/100.0  %></p>

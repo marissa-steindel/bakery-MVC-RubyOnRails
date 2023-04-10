@@ -11,39 +11,70 @@
     </div>
   <% end %>
 
-  <div class="mb-3">
-    <%= form.label :name, class:"label" %>
-    <%= form.text_field :name, class:"input" %>
-  </div>
+  <%# Name %>
+  <% if purpose == "update" %>
+    <p class="title is-4"><%=customer.name%></p>
+  <% else %>
+    <div class="mb-3">
+      <%= form.label :name, class:"label" %>
+      <%= form.text_field :name, placeholder:"Donald Duck",  class:"input" %>
+    </div>
+  <% end %>
 
-  <div class="mb-3">
-    <%= form.label :username, class:"label" %>
-    <%= form.text_field :username, class:"input" %>
-  </div>
+  <%# Username %>
+  <% unless purpose == "update" %>
+    <div class="mb-3">
+      <%= form.label :username, class:"label" %>
+      <%= form.text_field :username, placeholder:"d.duckerson",  class:"input" %>
+    </div>
+  <% end %>
 
-  <div class="mb-3">
-    <%= form.label :password_digest, class:"label" %>
-    <%= form.text_field :password_digest, class:"input" %>
-  </div>
+  <%# Password %>
+  <% unless purpose == "update" %>
+    <div class="mb-3">
+      <%= form.label :password, class:"label" %>
+      <%= form.text_field :password, placeholder:"password", class:"input" %>
+      <%# <%= form.password_field :password, class:"input" > %>
+    </div>
+  <% end %>
 
+  <%# Password confirmation %>
+  <% unless purpose == "update" %>
+    <div class="mb-3">
+      <%# <%= form.label :password_confirmation, class:"label" %> %>
+      <%# <%= form.text_field :password_confirmation, placeholder:"password", class:"input" %> %>
+      <%# <%= form.password_field :password_confirmation, class:"input" > %>
+    </div>
+  <% end %>
+
+  <%# Address %>
   <div class="mb-3">
     <%= form.label :address, class:"label" %>
-    <%= form.text_field :address, class:"input" %>
+    <%= form.text_field :address, placeholder:"666 Cherry Tree Lane", class:"input" %>
   </div>
 
-
-    <div class="mb-6">
-      <%= form.label :province_id, "Province", class: "label" %>
-      <div class="select">
-        <% if purpose == "update"%>
-          <%= form.select :province_id, options_from_collection_for_select(Province.all, 'id', 'code', customer.province.id)%>
-        <% elsif purpose == "create" %>
-          <%= form.select :province_id, options_from_collection_for_select(Province.all, 'id', 'code'), prompt: "select province" %>
-        <% end %>
-      </div>
+  <%# Province %>
+  <div class="mb-6">
+    <%= form.label :province_id, "Province", class: "label" %>
+    <div class="select">
+      <% if purpose == "update"%>
+        <%= form.select :province_id, options_from_collection_for_select(Province.all, 'id', 'code', customer.province.id)%>
+      <% elsif purpose == "create" %>
+        <%= form.select :province_id, options_from_collection_for_select(Province.all, 'id', 'code'), prompt: "select province" %>
+      <% end %>
     </div>
-
-  <div>
-    <%= form.submit %>
   </div>
+
+  <%# submit %>
+  <% if purpose == "update"%>
+    <div>
+      <%= form.submit class:"button" %>
+    </div>
+  <% elsif purpose == "create" %>
+    <div>
+      <%= form.submit "Sign Up", class:"button" %>
+    </div>
+  <% end %>
+
+
 <% end %>

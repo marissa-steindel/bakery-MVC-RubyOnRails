@@ -24,7 +24,8 @@ class CustomersController < ApplicationController
     @customer = Customer.new(customer_params)
 
     if @customer.save
-      redirect_to @customer, notice: "#{@customer.name}, thank you for creating an account."
+      session[:customer_id] = @customer.id
+      redirect_to root_path, notice: "#{@customer.name}, thank you for creating an account."
     else
       render :new, status: :unprocessable_entity
     end

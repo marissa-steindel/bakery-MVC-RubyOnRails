@@ -12,7 +12,7 @@
 
   <p>
     <strong>Password digest:</strong>
-    <%= customer.password_digest %>
+    <%= customer.password_digest.truncate(8) %>
   </p>
 
   <p>

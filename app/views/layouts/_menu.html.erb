@@ -10,7 +10,7 @@
 
   <%# display number of items in cart %>
   <% if session[:cart].present? %>
-    <%= link_to "Checkout [#{session[:cart].values.sum}]", "checkout_path", :class=>"navbar-item" %>
+    <%= link_to "Checkout [#{session[:cart].values.sum}]", checkout_path, :class=>"navbar-item" %>
   <% end %>
 
   <%# Display customer, if signed in %>
@@ -18,8 +18,8 @@
     <p class="navbar-item ml-6 mr-2"><%= "Welcome, #{Customer.find_by(id: session[:customer_id]).name}"%></p>
     <%= button_to "Log Out", logout_path, method: :delete, :class=>" navbar-item button is-small mt-3" %>
   <% else %>
-    <%# <%= link_to "Login", show_login_form_path, :class=>"navbar-item" %> %>
-    <%# <%= link_to "Sign Up", new_customer_path, :class=>"navbar-item" %> %>
+    <%= link_to "Login", show_login_form_path, :class=>"navbar-item" %>
+    <%= link_to "Sign Up", new_customer_path, :class=>"navbar-item" %>
   <% end %>
 
 </nav>

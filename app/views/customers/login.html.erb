@@ -1,0 +1,31 @@
+<h1 class="title is-3">Log In</h1>
+
+<div class="is-flex">
+  <p class="mr-3 mb-3">New Customer?</p>
+  <%= link_to "Create New Account", new_customer_path%>
+</div>
+
+<%# <%= render "form", customer: @customer > %>
+<%# <%= render partial: 'form',
+            locals: {purpose: "login", customer: @customer} > %>
+
+<%# <%= form_with url: authenticate_path, data: {turbo: false}  do |form| > %>
+<%= form_with url: authenticate_path  do |form| %>
+
+  <div class="mb-3">
+    <%= form.label :username, class: "label" %>
+    <%= form.text_field :username, class: "input" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :password, class: "label"%>
+    <%= form.password_field :password, class: "input" %>
+  </div>
+
+  <div class="mb-3">
+    <%= link_to "Forgot your password?" %>
+  </div>
+
+  <%= form.submit "Login", class: "button" %>
+
+<% end %>

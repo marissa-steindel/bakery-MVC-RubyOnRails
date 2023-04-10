@@ -1,4 +1,11 @@
 class Product < ApplicationRecord
-  has_and_belongs_to_many :categories
-  has_and_belongs_to_many :orders
+  # associations
+  has_many :product_categories
+  has_many :categories, through: :product_categories
+
+  # has_many :order_products
+  # has_many :orders, through: :order_products
+
+  # validations
+  validates :name, presence: true
 end

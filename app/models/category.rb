@@ -1,3 +1,8 @@
 class Category < ApplicationRecord
-  has_and_belongs_to_many :products
+  # associations
+  has_many :product_categories, dependent: :destroy
+  has_many :products, through: :product_categories
+
+  # validations
+  validates :name, presence: true
 end

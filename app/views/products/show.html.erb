@@ -1,6 +1,10 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @product %>
+<div class="column is-3 card mx-5 my-5">
+  <%# render @product %>
+  <%= render partial: 'product',
+             locals: {show_page: true, product: @product} %>
+</div>
 
 <div>
   <%= link_to "Edit this product", edit_product_path(@product) %> |

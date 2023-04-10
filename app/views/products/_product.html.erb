@@ -1,11 +1,18 @@
-<div class="block" id="<%= dom_id product %>">
-  <%= link_to product.name, product %>
+<div class="" id="<%# dom_id product %>">
 
+  <% if show_page %>
+    <p class="title is-5"><%= product.name %></p>
+  <% else %>
+    <p class="title is-5"><%= link_to product.name, product %></p>
+  <% end %>
 
-  <p>
-    <strong>Description:</strong>
-    <%= product.description %>
-  </p>
+  <%# card tags %>
+  <% product.categories.each do |c| %>
+    <span class="tag is-link is-light is-rounded block"><%= c.name %></span>
+  <% end %>
+  <br>
+
+  <p><%= product.description %></p>
 
   <p>
     <strong>Price:</strong>

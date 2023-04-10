@@ -10,16 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_09_171013) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_10_155726) do
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "categories_products", id: false, force: :cascade do |t|
-    t.integer "product_id", null: false
-    t.integer "category_id", null: false
   end
 
   create_table "customers", force: :cascade do |t|
@@ -33,14 +28,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_09_171013) do
     t.index ["province_id"], name: "index_customers_on_province_id"
   end
 
-  create_table "customers_orders", id: false, force: :cascade do |t|
-    t.integer "customer_id", null: false
-    t.integer "order_id", null: false
-    t.decimal "GST"
-    t.decimal "PST"
-    t.decimal "HST"
-  end
-
   create_table "orders", force: :cascade do |t|
     t.integer "customer_id", null: false
     t.string "payment_id"
@@ -50,11 +37,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_09_171013) do
     t.index ["customer_id"], name: "index_orders_on_customer_id"
   end
 
-  create_table "orders_products", id: false, force: :cascade do |t|
-    t.integer "order_id", null: false
+  create_table "product_categories", force: :cascade do |t|
     t.integer "product_id", null: false
-    t.integer "qty"
-    t.integer "price"
+    t.integer "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_product_categories_on_category_id"
+    t.index ["product_id"], name: "index_product_categories_on_product_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -77,4 +66,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_09_171013) do
 
   add_foreign_key "customers", "provinces"
   add_foreign_key "orders", "customers"
+  add_foreign_key "product_categories", "categories"
+  add_foreign_key "product_categories", "products"
 end

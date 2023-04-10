@@ -1,0 +1,33 @@
+<% unless @customer.province.GST == 0 %>
+  <tr>
+    <td></td>
+    <td></td>
+    <td><strong class="title is-6">GST:</strong></td>
+    <td><%= number_to_currency @GST_due %></td>
+    <td></td>
+  </tr>
+<% end %>
+<% unless @customer.province.PST == 0 %>
+  <tr>
+    <td></td>
+    <td></td>
+    <td><strong class="title is-6">PST:</strong></td>
+    <td><%= number_to_currency @PST_due %></td>
+    <td></td>
+  </tr>
+<% end %>
+<% unless @customer.province.HST == 0 %>
+  <tr>
+    <td></td>
+    <td></td>
+    <td><strong class="title is-6">HST:</strong></td>
+    <td><%= number_to_currency @HST_due %></td>
+    <td></td>
+  </tr>
+<% end %>
+  <tr>
+  <td></td>
+  <td></td>
+  <td><strong class="title is-6">Grand Total:</strong></td>
+  <td><%= number_to_currency @cart_grandtotal %></td>
+  </tr>

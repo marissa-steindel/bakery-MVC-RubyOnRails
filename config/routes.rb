@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "customers#index"
+  root "products#index"
   resources :customers
   resources :provinces
   resources :categories
@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   delete  'remove_from_cart/:id',     to: "products#remove_from_cart",    as: "remove_from_cart"
   delete  'decrement_from_cart/:id',  to: "products#decrement_from_cart", as: "decrement_from_cart"
   get     'clear_cart',               to: "products#clear_cart",          as: "clear_cart"
+
+  get "checkout", to: "checkout#index", as: "checkout"
+  get "thankyou", to: "checkout#thankyou"
 
 end
 

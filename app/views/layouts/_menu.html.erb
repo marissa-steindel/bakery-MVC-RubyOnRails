@@ -10,7 +10,7 @@
 
   <%# display number of items in cart %>
   <% if session[:cart].present? %>
-    <%= link_to "Checkout [#{session[:cart].values.sum}]", "#", :class=>"navbar-item" %>
+    <%= link_to "Checkout [#{session[:cart].values.sum}]", "checkout_path", :class=>"navbar-item" %>
   <% end %>
 
   <%# Display customer, if signed in %>

@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  resources :orders
   root "customers#index"
   resources :customers
   resources :provinces
   resources :categories
   resources :products
+  resources :orders
+  resources :product_categories
 end
 
 

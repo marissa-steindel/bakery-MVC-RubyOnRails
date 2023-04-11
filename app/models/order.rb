@@ -1,4 +1,6 @@
 class Order < ApplicationRecord
+  # associations
   belongs_to :customer
-  has_and_belongs_to_many :products
+  has_many :order_products, dependent: :destroy
+  has_many :products, through: :order_products
 end

@@ -4,6 +4,9 @@ class CreateOrders < ActiveRecord::Migration[7.0]
       t.references :customer, null: false, foreign_key: true
       t.string :payment_id
       t.string :status
+      t.decimal :GST
+      t.decimal :PST
+      t.decimal :HST
 
       t.timestamps
     end

@@ -6,7 +6,7 @@
 
 <table class="table is-striped">
 <tr>
-  <th>Invoice No.</th>
+  <th>Order ID</th>
   <th>Status</th>
   <th>Transaction Date</th>
   <th>Payment ID</th>
@@ -14,12 +14,22 @@
   <th>GST</th>
   <th>HST</th>
   <th>PST</th>
-  <th>Grand Total</th>
+  <th></th>
+  <th></th>
+  <th></th>
+  <th></th>
 </tr>
   <% @orders.each do |o|%>
     <tr>
       <td><%=link_to o.id, order_path(o.id)%></td>
-      <td><%= select_tag(:status, options_for_select(%w[Pending Paid Shipped], o.status))%> </td>
+      <td>
+        <%= form_with(model: o) do |form| %>
+          <div class="select is-small">
+            <%= form.select :status, options_for_select(%w[Pending Paid Shipped], "#{o.status}"), prompt:"select status"%>
+          </div>
+          <%= form.submit "update status" , class:"button is-small is-inline"%>
+        <% end %>
+      </td>
       <td><%= o.created_at.strftime('%m/%d/%Y %H:%M') %></td>
       <td><%= o.payment_id %></td>
       <td><%= link_to o.customer.name, o.customer %></td>
@@ -28,6 +38,8 @@
       <td></td>
       <td><%# number_to_currency rand(9999)/100.0 %></td>
       <td> <%# button_to "update status"%> </td>
+      <td><%= link_to "EDIT", edit_order_path(o.id) %></td>
+      <td><%= link_to "DELETE", order_path(o.id), data: { turbo_method: :delete, turbo_confirm: "Delete?" }, class: "button is-small" %></td>
     </tr>
 <% end %>
 

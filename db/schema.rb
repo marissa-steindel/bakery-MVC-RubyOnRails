@@ -32,6 +32,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_10_155726) do
     t.integer "customer_id", null: false
     t.string "payment_id"
     t.string "status"
+    t.decimal "GST"
+    t.decimal "PST"
+    t.decimal "HST"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["customer_id"], name: "index_orders_on_customer_id"

@@ -4,8 +4,14 @@ one:
   customer: one
   payment_id: MyString
   status: MyString
+  GST: 1
+  PST: 1
+  HST: 1
 
 two:
   customer: two
   payment_id: MyString
   status: MyString
+  GST: 1
+  PST: 1
+  HST: 1

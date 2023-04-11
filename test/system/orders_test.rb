@@ -14,6 +14,9 @@ class OrdersTest < ApplicationSystemTestCase
     visit orders_url
     click_on "New order"
 
+    fill_in "Gst", with: @order.GST
+    fill_in "Hst", with: @order.HST
+    fill_in "Pst", with: @order.PST
     fill_in "Customer", with: @order.customer_id
     fill_in "Payment", with: @order.payment_id
     fill_in "Status", with: @order.status
@@ -27,6 +30,9 @@ class OrdersTest < ApplicationSystemTestCase
     visit order_url(@order)
     click_on "Edit this order", match: :first
 
+    fill_in "Gst", with: @order.GST
+    fill_in "Hst", with: @order.HST
+    fill_in "Pst", with: @order.PST
     fill_in "Customer", with: @order.customer_id
     fill_in "Payment", with: @order.payment_id
     fill_in "Status", with: @order.status

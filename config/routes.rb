@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   get "checkout", to: "checkout#index", as: "checkout"
   get "thankyou", to: "checkout#thankyou"
 
+  get "invoice", to: "orders#invoice", as: "invoice"
+
 end
 
 

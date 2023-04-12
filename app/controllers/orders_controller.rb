@@ -1,6 +1,10 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: %i[ show edit update destroy ]
 
+  def invoice
+
+  end
+
   # GET /orders or /orders.json
   def index
     @orders = Order.all
@@ -33,7 +37,7 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1 or /orders/1.json
   def update
     if @order.update(order_params)
-      redirect_to order_url(@order), notice: "Order was successfully updated."
+      redirect_to orders_path, notice: "Order was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end

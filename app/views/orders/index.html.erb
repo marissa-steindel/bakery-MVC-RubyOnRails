@@ -33,11 +33,9 @@
       <td><%= o.created_at.strftime('%m/%d/%Y %H:%M') %></td>
       <td><%= o.payment_id %></td>
       <td><%= link_to o.customer.name, o.customer %></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td><%# number_to_currency rand(9999)/100.0 %></td>
-      <td> <%# button_to "update status"%> </td>
+      <td><%= number_to_percentage o.GST, precision:1 %></td>
+      <td><%= number_to_percentage o.PST, precision:1 %></td>
+      <td><%= number_to_percentage o.HST, precision:1 %></td>
       <td><%= link_to "EDIT", edit_order_path(o.id) %></td>
       <td><%= link_to "DELETE", order_path(o.id), data: { turbo_method: :delete, turbo_confirm: "Delete?" }, class: "button is-small" %></td>
     </tr>

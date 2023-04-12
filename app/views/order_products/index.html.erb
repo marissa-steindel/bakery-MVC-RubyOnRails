@@ -1,14 +1,26 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Order products</h1>
+<h1 class="title">Order Products</h1>
+<%= link_to "New order product", new_order_product_path, class:"button" %>
 
-<div id="order_products">
-  <% @order_products.each do |order_product| %>
-    <%= render order_product %>
-    <p>
-      <%= link_to "Show this order product", order_product %>
-    </p>
+<table class="table is-striped">
+  <thead>
+    <th>Order No.</th>
+    <th>Product No.</th>
+    <th>QTY</th>
+    <th>Unit Price</th>
+    <th>Customer</th>
+  </thead>
+  <% @order_products.each do |op| %>
+    <tr>
+      <td class="has-text-centered"><%= link_to op.order_id, op.order %></td>
+      <td class="has-text-centered"><%= op.product_id %></td>
+      <td class="has-text-centered"><%= op.qty %></td>
+      <td class="has-text-centered"><%= number_to_currency op.price/100.0 %></td>
+      <td class="has-text-centered"><%= op.order.customer.name %></td>
+    </tr>
   <% end %>
-</div>
 
-<%= link_to "New order product", new_order_product_path %>
+</table>
+
+

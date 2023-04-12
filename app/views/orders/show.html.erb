@@ -1,6 +1,70 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @order %>
+<%# render @order %>
+
+<div>
+  <p>
+    <strong>Customer:</strong>
+    <%= link_to @order.customer.name, @order.customer %>
+  </p>
+
+  <p>
+    <strong>Payment ID:</strong>
+    <%= @order.payment_id %>
+  </p>
+
+  <p>
+    <strong>Status:</strong>
+    <%= @order.status %>
+  </p>
+
+  <p>
+    <strong>GST:</strong>
+    <%= @order.GST %>
+  </p>
+
+  <p>
+    <strong>PST:</strong>
+    <%= @order.PST %>
+  </p>
+
+  <p>
+    <strong>HST:</strong>
+    <%= @order.HST %>
+  </p>
+
+</div>
+
+<table class="table is-striped">
+  <thead>
+    <th>Product</th>
+    <th>Quantity</th>
+    <th>Unit Price</th>
+    <th></th>
+  </thead>
+
+  <% @order_products.each do |op| %>
+    <tr>
+      <td><%= op.product.name %></td>
+      <td><%= op.qty %></td>
+      <td><%= number_to_currency op.price/100.0 %></td>
+      <td></td>
+    </tr>
+  <% end %>
+
+  <tr></tr>
+  <tr>
+    <td>GST @ <%= @order.GST.inspect %></td>
+  </tr>
+  <tr>
+    <td>PST @ <%= @order.PST.inspect %></td>
+  </tr>
+  <tr>
+    <td>HST @ <%= @order.HST.inspect %></td>
+  </tr>
+
+</table>
+
 
 <div>
   <%= link_to "Edit this Order", edit_order_path(@order) %> |

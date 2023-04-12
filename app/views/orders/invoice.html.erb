@@ -1,21 +1,9 @@
-<%= order.inspect %>
-
-<%= form_with(model: order) do |form| %>
-
-  <% if order.errors.any? %>
-    <div style="color: red">
-      <ul>
-        <% order.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_with(model: @order) do |form| %>
 
   <div class="mb-3">
     <%= form.label :customer_id, class:"label" %>
     <div class="select">
-      <%= form.select :customer_id, options_from_collection_for_select(Customer.all, 'id', 'name'), prompt: "select customer"%>
+      <%= form.select :customer_id, options_from_collection_for_select(Customer.all, 'id', 'name', @customer.name), prompt: "select customer"%>
     </div>
   </div>
 

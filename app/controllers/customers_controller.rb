@@ -4,6 +4,7 @@ class CustomersController < ApplicationController
   # GET /customers or /customers.json
   def index
     @customers = Customer.all
+    @customer_orders = Order.find_by(customer_id: @customer)
   end
 
   # GET /customers/1 or /customers/1.json

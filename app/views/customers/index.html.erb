@@ -15,6 +15,7 @@
     <th>province</th>
     <th>username</th>
     <th>password digest</th>
+    <th>NumOfOrders</th>
     <th></th>
     <th></th>
   </tr>
@@ -27,6 +28,7 @@
       <td><%=c.province.name%></td>
       <td><%=c.username %></td>
       <td><%=c.password_digest.truncate(8)%></td>
+      <td class="has-text-centered"><%= Order.where(customer_id: c.id).count %></td>
       <td><%= link_to "EDIT", edit_customer_path(c.id) %></td>
       <td><%= link_to "DELETE", customer_path(c.id), data: { turbo_method: :delete, turbo_confirm: "Delete #{c.name}?" }, class: "button is-small" %></td>
     </tr>

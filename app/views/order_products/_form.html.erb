@@ -1,8 +1,7 @@
 <%= form_with(model: order_product) do |form| %>
+
   <% if order_product.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(order_product.errors.count, "error") %> prohibited this order_product from being saved:</h2>
-
       <ul>
         <% order_product.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,25 +10,33 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :order_id, style: "display: block" %>
-    <%= form.text_field :order_id %>
+
+  <div class="mb-3">
+    <%= form.label :order_id, "Order ID", class:"label" %>
+    <div class="select">
+      <%= form.select :order_id, options_from_collection_for_select(Order.all, 'id', 'id'), prompt: "select order"%>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :product_id, style: "display: block" %>
-    <%= form.text_field :product_id %>
+  <div class="mb-3">
+    <%= form.label :product_id, "Product", class:"label" %>
+    <div class="select">
+      <%= form.select :product_id, options_from_collection_for_select(Product.all, 'id', 'name'), prompt: "select product"%>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :qty, style: "display: block" %>
-    <%= form.number_field :qty %>
+  <div class="mb-3">
+    <%= form.label :qty, "QTY", class:"label" %>
+    <div class="select">
+      <%= form.select :qty, options_for_select(1..99)%>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :price, style: "display: block" %>
-    <%= form.number_field :price %>
-  </div>
+  <div class="mb-3">
+    <%= form.label :price, "Unit Price", class:"label" %>
+    <div class="select">
+      <%= form.select :price, options_from_collection_for_select(Product.all, 'price', 'price'), prompt: "select price"%>
+    </div>  </div>
 
   <div>
     <%= form.submit %>

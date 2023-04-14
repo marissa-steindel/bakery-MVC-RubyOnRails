@@ -1,6 +1,7 @@
 class Customer < ApplicationRecord
   # associations
-  has_many :orders
+  has_many :orders, dependent: :destroy
+  # has_many :orders, dependent: :nullify
   has_many :products, through: :orders
   belongs_to :province
 

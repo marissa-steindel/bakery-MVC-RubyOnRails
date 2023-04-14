@@ -4,6 +4,18 @@
 <%= render partial: 'customer',
             locals: {purpose: "read", customer: @customer} %>
 
+<br>
+<br>
+<br>
+<p class="title is-5 my-1">Orders</p>
+<% @customer.orders.each do |o| %>
+  <p>
+    <%= link_to o.id, order_path(o.id), class:"mr-3" %> <%= o.created_at %>
+  </p>
+  <br>
+<% end %>
+
+<br>
 <div>
   <%= link_to "Edit this Customer", edit_customer_path(@customer) %> |
   <%= link_to "Back to Customers Index", customers_path %>

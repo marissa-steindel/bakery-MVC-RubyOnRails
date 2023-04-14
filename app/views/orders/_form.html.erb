@@ -1,5 +1,3 @@
-<%= order.inspect %>
-
 <%= form_with(model: order) do |form| %>
 
   <% if order.errors.any? %>
@@ -15,7 +13,11 @@
   <div class="mb-3">
     <%= form.label :customer_id, class:"label" %>
     <div class="select">
-      <%= form.select :customer_id, options_from_collection_for_select(Customer.all, 'id', 'name'), prompt: "select customer"%>
+    <% if session[:customer_id].nil? %>
+      <%= form.select :customer_id, options_from_collection_for_select(Customer.all, 'id', 'name')%>
+    <% else %>
+      <%= form.select :customer_id, options_from_collection_for_select(Customer.all, 'id', 'name', @customer.id)%>
+    <% end %>
     </div>
   </div>
 
@@ -32,22 +34,36 @@
   </div>
 
   <div class="mb-3">
-    <%= form.label :GST, "GST", class:"label" %>
-    <%= form.select :GST, options_from_collection_for_select(Province.all, 'GST','GST')%>
-
+    <% if session[:customer_id].nil? %>
+      <%= form.label :GST, "GST", class:"label" %>
+      <%= form.select :GST, options_from_collection_for_select(Province.select(:GST).distinct, 'GST','GST'), prompt: ""%>
+    <% else %>
+      <%= form.label :GST, "#{@customer.province.name} GST", class:"label" %>
+      <%= form.select :GST, options_from_collection_for_select(Province.select(:GST).distinct, 'GST','GST', @customer.province.GST)%>
+    <% end %>
   </div>
 
   <div class="mb-3">
-    <%= form.label :PST, "PST", class:"label" %>
-    <%= form.select :PST, options_from_collection_for_select(Province.all, 'PST','PST')%>
+    <% if session[:customer_id].nil? %>
+      <%= form.label :PST, "PST", class:"label" %>
+      <%= form.select :PST, options_from_collection_for_select(Province.select(:PST).distinct, 'PST','PST'), prompt: ""%>
+    <% else %>
+      <%= form.label :PST, "#{@customer.province.name} PST", class:"label" %>
+      <%= form.select :PST, options_from_collection_for_select(Province.select(:PST).distinct, 'PST','PST', @customer.province.PST)%>
+    <% end %>
   </div>
 
   <div class="mb-3">
-    <%= form.label :HST, "HST", class:"label" %>
-    <%= form.select :HST, options_from_collection_for_select(Province.all, 'HST','HST')%>
+    <% if session[:customer_id].nil? %>
+      <%= form.label :HST, "HST", class:"label" %>
+      <%= form.select :HST, options_from_collection_for_select(Province.select(:HST).distinct, 'HST','HST'), prompt: ""%>
+    <% else %>
+      <%= form.label :HST, "#{@customer.province.name} HST", class:"label" %>
+      <%= form.select :HST, options_from_collection_for_select(Province.select(:HST).distinct, 'HST','HST', @customer.province.HST)%>
+    <% end %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit class:"button is-outlined is-light is-success" %>
   </div>
 <% end %>

@@ -20,7 +20,7 @@
     <th></th>
   </tr>
 
-  <% @customers.each do |c|%>
+  <% @customers.reverse.each do |c|%>
     <tr>
       <td><%=c.id%></td>
       <td><%=link_to c.name, customer_path(c.id)%></td>
@@ -28,7 +28,7 @@
       <td><%=c.province.name%></td>
       <td><%=c.username %></td>
       <td><%=c.password_digest.truncate(8)%></td>
-      <td class="has-text-centered"><%= Order.where(customer_id: c.id).count %></td>
+      <td class="has-text-centered"><%= link_to Order.where(customer_id: c.id).count, customer_path(c.id) %></td>
       <td><%= link_to "EDIT", edit_customer_path(c.id) %></td>
       <td><%= link_to "DELETE", customer_path(c.id), data: { turbo_method: :delete, turbo_confirm: "Delete #{c.name}?" }, class: "button is-small" %></td>
     </tr>

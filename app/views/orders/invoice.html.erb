@@ -1,41 +1,92 @@
+<h3 class="title is-4">Thank you for your order!</h3>
+
+<p>Your goodies are on the way.</p>
+
+<%# cart contents %>
+<%# <%= render "products/cart_contents", show_taxes: true > %>
+
+
+<%= @customer.name%>
+<%= @picklist.inspect%>
+
+
+<%= Order.last.inspect %>
+
+
 <%= form_with(model: @order) do |form| %>
 
   <div class="mb-3">
     <%= form.label :customer_id, class:"label" %>
-    <div class="select">
-      <%= form.select :customer_id, options_from_collection_for_select(Customer.all, 'id', 'name', @customer.name), prompt: "select customer"%>
-    </div>
+    <%= @customer.name%>
+    <%= form.hidden_field :customer_id, value:@customer_id%>
   </div>
 
   <div class="mb-3">
-    <%= form.label :payment_id, "Payment ID", class:"label" %>
-    <%= form.text_field :payment_id, value:rand(111111..999999), class:"input" %>
+    <%= form.label :payment_id, "Payment ID", class:"label" %> <p><%=rand(111111..999999)%></p>
+    <%= form.hidden_field :payment_id, value:rand(111111..999999)%>
   </div>
 
   <div class="mb-3">
-    <%= form.label :status, class:"label"  %>
-    <div class="select">
-      <%= form.select :status, options_for_select(%w[Pending Paid Shipped], "Pending"), prompt:"select status"%>
-    </div>
+    <%= form.label :status, class:"label"  %><p>Pending</p>
+    <%= form.hidden_field :status, value:"Pending"%>
   </div>
 
   <div class="mb-3">
-    <%= form.label :GST, "GST", class:"label" %>
-    <%= form.select :GST, options_from_collection_for_select(Province.all, 'GST','GST')%>
-
+    <%= form.label :GST, "#{@customer.province.name} GST", class:"label" %>
+    <%= @customer.province.GST%>
+    <%= form.hidden_field :customer_id, value:@customer.province.GST%>
   </div>
 
   <div class="mb-3">
-    <%= form.label :PST, "PST", class:"label" %>
-    <%= form.select :PST, options_from_collection_for_select(Province.all, 'PST','PST')%>
+    <%= form.label :PST, "#{@customer.province.name} PST", class:"label" %>
+    <%= @customer.province.PST%>
+    <%= form.hidden_field :PST, value:@customer.province.PST%>
   </div>
 
   <div class="mb-3">
-    <%= form.label :HST, "HST", class:"label" %>
-    <%= form.select :HST, options_from_collection_for_select(Province.all, 'HST','HST')%>
+    <%= form.label :HST, "#{@customer.province.name} HST", class:"label" %>
+    <%= @customer.province.HST%>
+    <%= form.hidden_field :HST, value:@customer.province.HST%>
   </div>
 
-  <div>
-    <%= form.submit %>
-  </div>
 <% end %>
+
+
+   <table class="table is-striped">
+      <tr>
+        <th></th>
+        <th>Item</th>
+        <th class="has-text-centered">QTY</th>
+        <th class="has-text-centered">Unit Price</th>
+        <th></th>
+      </tr>
+      <% @picklist.each do |p|%>
+        <tr>
+          <td>
+            <%# <% if p.image.present? > %>
+              <%# <%= image_tag p.image.variant(resize_to_fit: [50,50]) > %>
+            <%# <% end > %>
+          </td>
+          <td>
+            <p class="py-2"><%= Product.find(p.keys[0]).name %></p>
+          </td>
+          <td class="has-text-centered">
+            <p class="px-3"><%= p%></p>
+          </td>
+          <td>
+            <p class="py-2"><%= number_to_currency p.price.to_i/100.0  %></p>
+          </td>
+          <td></td>
+        </tr>
+      <% end %>
+      <tr class="">
+        <td></td>
+        <td></td>
+        <td><strong class="title is-6">Subtotal:</strong></td>
+        <td><%=  %></td>
+        <td></td>
+      </tr>
+  <p class="px-3"><%= @picklist%></p>
+        <%# <%= render "checkout/show_taxes"%> %>
+      <%# <% end %> %>
+    </table>

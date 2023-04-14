@@ -9,10 +9,14 @@
   </p>
 
   <p>
+    <strong>Order ID:</strong>
+    <%= @order.id %>
+  </p>
+
+  <p>
     <strong>Payment ID:</strong>
     <%= @order.payment_id %>
   </p>
-
   <p>
     <strong>Status:</strong>
     <%= @order.status %>
@@ -43,24 +47,25 @@
     <th></th>
   </thead>
 
+
   <% @order_products.each do |op| %>
     <tr>
       <td><%= op.product.name %></td>
       <td><%= op.qty %></td>
-      <td><%= number_to_currency op.price/100.0 %></td>
-      <td></td>
+      <td><%= number_to_currency op.price/100.0 %> </td>
+      <td> = <%= number_to_currency op.qty * op.price/100.0 %></td>
     </tr>
   <% end %>
 
   <tr></tr>
   <tr>
-    <td>GST @ <%= @order.GST.inspect %></td>
+    <td>GST @ <%= number_to_percentage @order.GST, precision: 1 %></td>
   </tr>
   <tr>
-    <td>PST @ <%= @order.PST.inspect %></td>
+    <td>PST @ <%= number_to_percentage @order.PST, precision: 1 %></td>
   </tr>
   <tr>
-    <td>HST @ <%= @order.HST.inspect %></td>
+    <td>HST @ <%= number_to_percentage @order.HST, precision: 1 %></td>
   </tr>
 
 </table>

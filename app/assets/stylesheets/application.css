@@ -15,7 +15,8 @@
  */
 
  @import url(https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Lexend+Peta:wght@200&family=Lexend:wght@200&family=Nanum+Gothic+Coding&family=Poiret+One&family=Urbanist:wght@300&display=swap);
-#hero
+
+ #hero
 {
   display: flex;
   background-image: url("patrick-fore-m9qWesqRN0M-unsplash-sliced.jpg");

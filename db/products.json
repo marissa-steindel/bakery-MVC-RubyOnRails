@@ -1,0 +1,68 @@
+[
+  {
+    "name": "Rustic Sourdough",
+    "price" : 650,
+    "description" : "Made with the sourdough starter passed down from generation to generation. Chewy, dense crumb on the inside, crusty on the outside. Enjoy with butter.",
+    "categories": ["loaf", "savoury"]
+  },
+  {
+    "name":"Flax & Pepitas",
+    "price":650,
+    "description":"Crunchy with nutty notes. Get in your extra fibre in the most delicious way. Enjoy toasted for extra crunch. The ultimate base for avocado toast.",
+    "categories": ["loaf", "savoury"]
+  },
+  {
+    "name":"Jalepeno Cheddar",
+    "price":650,
+    "description":"The bread that bites back. Feel the heat and melt into this cheesy combo.",
+    "categories": ["loaf", "savoury"]
+  },
+  {
+    "name": "Chocolate Cherry Hazelnut Loaf",
+    "price":650,
+    "description":"Cozy up to this dense loaf with decadent chocolate chunks and the nutty crunch of toasted hazelnuts. Enjoy toasted with a pat of melted butter.",
+    "categories": ["loaf", "sweet"]
+  },
+  {
+    "name":"Lemon Crinkle Cookie",
+    "price":100,
+    "description":"A soft chewy center zippy with lemon tang hides beneath the crackly, sugar dusted crust.",
+    "categories": ["cookie", "sweet"]
+  },
+  {
+    "name":"Blackbery Hand Pie",
+    "price":475,
+    "description": "The pop tart of your dreams. This week's hand pie is bursting with blackberry preserves and drizzled with blackberry icing.",
+    "categories": ["pastry", "sweet"]
+  },
+  {
+    "name":"Blueberry Peach Gallette",
+    "price":350,
+    "description": "Preserved peaches and blueberries from last summer's harvest will have you dreaming of a fragrant summer breeze.",
+    "categories": ["pastry", "sweet"]
+  },
+  {
+    "name":"Parm Spinach Spiral",
+    "price":150,
+    "description":"Tender spinach is punctuated with sharp cheesy notes of parmigiano reggiano in this savoury pastry.",
+    "categories": ["pastry", "savoury"]
+  },
+  {
+    "name":"Flatbread",
+    "price":125,
+    "description":"This Meditteranean-inspired flatbread is great for enrobing kabobs or complementing a mezze platter with hummus, labneh, and olives.",
+    "categories": ["flatbread", "savoury"]
+  },
+  {
+    "name":"Choco Chip Cookie",
+    "price":100,
+    "description":"The classic chocolate chip cookie. Warm. Gooey. Chocolatey. Need we say more?",
+    "categories": ["cookie", "sweet"]
+  },
+  {
+    "name":"Cinnamon Bun",
+    "price":250,
+    "description":"Comfort food at it's finest. Warm your heart with this stick to your ribs bun full of gooey goodness.",
+    "categories": ["bun","sweet"]
+  }
+]

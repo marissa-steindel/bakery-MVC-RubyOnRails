@@ -10,7 +10,7 @@
 <div class="block is-flex">
   <% unless @cart_contents.empty?%>
     <% if session[:customer_id].nil? %>
-      <%= link_to "Checkout", show_login_form_path, class:"button mr-4 is-success is-light is-outlined" %></p>
+      <%= link_to "Checkout", login_path, class:"button mr-4 is-success is-light is-outlined" %></p>
     <% else %>
       <%= link_to "Checkout", checkout_path, class:"button mr-4 is-success is-light is-outlined" %></p>
     <% end %>

@@ -5,6 +5,7 @@
 <div id="provinces">
   <table class="table is-striped">
     <tr>
+      <th>ID</th>
       <th>Province</th>
       <th>GST</th>
       <th>PST</th>
@@ -12,6 +13,7 @@
     </tr>
     <% @provinces.each do |p|%>
       <tr>
+        <td><%= link_to p.id, p %></td>
         <td><%= link_to p.name, p %></td>
         <td>
           <% unless p.GST == 0 %>

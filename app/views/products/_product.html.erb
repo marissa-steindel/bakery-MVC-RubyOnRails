@@ -1,32 +1,35 @@
-<div class="" id="<%# dom_id product %>">
+<div class="column is-3 card mx-5 my-5 py-5 px-5" id="<%# dom_id product %>">
 
   <%# card title %>
   <% if show_page %>
-    <p class="title is-5"><%= product.name %></p>
+    <p class="title is-5 has-text-centered"><%= product.name %></p>
   <% else %>
-    <p class="title is-5"><%= link_to product.name, product %></p>
+    <p class="title is-5 has-text-centered"><%= link_to product.name, product %></p>
   <% end %>
 
   <%# card tags %>
-  <% product.categories.each do |c| %>
-    <span class="tag is-link is-light is-rounded block"><%= c.name %></span>
-  <% end %>
-  <br>
-
-  <%# product description %>
-  <p><%= product.description %></p>
-
-  <%# price %>
-  <p><strong>Price:</strong><%= number_to_currency product.price.to_i/100.0 %></p>
-
-  <div class="card-content">
-    <%# buttons %>
-    <% if @cart_contents.include?(product) %>
-      <%= render partial: "qty_buttons", locals:{ product: product}%>
-      <%= button_to "remove", remove_from_cart_path(product.id), method: :delete, class:"button is-small is-danger is-outlined" %>
-    <% else %>
-      <%= button_to "add to cart", add_to_cart_path(product.id), method: :post, class:"button is-small"%>
+  <div class="is-flex is-justify-content-center my-3">
+    <% product.categories.each do |c| %>
+      <span class="tag is-link is-light is-rounded mx-2"><%= link_to c.name, c %></span>
     <% end %>
   </div>
+
+  <%# product description %>
+  <p class="has-text-justified px-3 py-3"><%= product.description %></p>
+
+  <%# price %>
+  <p class="subtitle is-4 my-4 px-3 has-text-centered"><%= number_to_currency product.price.to_i/100.0 %></p>
+
+  <%# buttons %>
+    <% if @cart_contents.include?(product) %>
+        <%= render partial: "qty_buttons", locals:{ product: product}%>
+      <div class="has-text-centered">
+          <%= button_to "remove", remove_from_cart_path(product.id), method: :delete, class:"button is-small is-danger is-outlined" %>
+      </div>
+    <% else %>
+      <div class="has-text-centered">
+        <%= button_to "add to cart", add_to_cart_path(product.id), method: :post, class:"button is-small"%>
+      </div>
+    <% end %>
 
 </div>

@@ -1,4 +1,4 @@
-<div class="is-flex py-2">
+<div class="is-flex py-3 is-justify-content-center">
   <%= button_to "-", decrement_from_cart_path(product.id), class:"button is-small is-info is-light is-outlined", method: :delete %>
   <p class="px-3"><%= session[:cart][product.id.to_s]%></p>
   <%= button_to "+", add_to_cart_path(product.id), class:"button is-small is-info is-light is-outlined", method: :post %>

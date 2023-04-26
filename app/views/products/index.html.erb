@@ -20,12 +20,10 @@
 
 <%# display products %>
 <%= link_to "New product", new_product_path, class:"button" %>
-<div class="columns is-multiline" id="products">
+<div class="columns is-multiline my-5 is-justify-content-center" id="products">
   <% @products.each do |product| %>
-    <div class="column is-3 card mx-5 my-5">
-      <%# render product %>
-      <%= render partial: 'product',
-            locals: {show_page: false, product: product} %>
-    </div>
+    <%# render product %>
+    <%= render partial: 'product',
+          locals: {show_page: false, product: product} %>
   <% end %>
 </div>

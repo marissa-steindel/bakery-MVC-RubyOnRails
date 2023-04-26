@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   get "invoice", to: "orders#invoice", as: "invoice"
 
+  get "about", to: "products#about", as: "about"
+
 end
 
 

@@ -36,3 +36,16 @@
   margin: 0px;
   padding-left: 50px;
 }
+
+body
+{
+  background-color: #989398;
+}
+
+div#picbanner img
+{
+  width: 100px;
+  height: 100px;
+  margin: 0px 2px;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.5);
+}

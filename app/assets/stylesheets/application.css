@@ -76,6 +76,18 @@ footer div#address p:first-of-type
 
 @media(max-width: 640px)
 {
+  #hero
+  {
+    /* display: flex; */
+    /* background-size: cover; */
+    /* background-repeat: no-repeat; */
+    background-position: 0px -30px;
+    /* height: 130px; */
+    /* align-items: center; vertical */
+    /* justify-content: flex-start; horizontal */
+  }
+
+
   #hero p
   {
       width: 30%;

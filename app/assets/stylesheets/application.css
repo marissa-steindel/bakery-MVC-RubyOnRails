@@ -40,6 +40,12 @@
 body
 {
   background-color: #989398;
+  font-family: 'Urbanist', sans-serif;
+}
+
+p, a.navbar-item, title
+{
+  font-family: 'Urbanist', sans-serif;
 }
 
 div#picbanner img
@@ -48,4 +54,40 @@ div#picbanner img
   height: 100px;
   margin: 0px 2px;
   box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.5);
+}
+
+footer
+{
+  background-color: #3a353b;
+  color: #fdf3e4;
+  font-family: 'Urbanist', sans-serif;
+}
+
+footer div#address p
+{
+    padding: 0px 10px;
+    border-left: 1px #fdf3e4 solid;
+}
+
+footer div#address p:first-of-type
+{
+    border-left: none;
+}
+
+@media(max-width: 640px)
+{
+  #hero p
+  {
+      width: 30%;
+      font-size: 40px;
+      line-height: 50px;
+  }
+
+  #hero p span
+  {
+      display: block;
+      line-height: 10px;
+      padding: 0 20%;
+      padding-top: 10px;
+  }
 }

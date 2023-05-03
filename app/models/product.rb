@@ -8,4 +8,7 @@ class Product < ApplicationRecord
 
   # validations
   validates :name, presence: true
+
+  # active storage
+  has_one_attached :image
 end

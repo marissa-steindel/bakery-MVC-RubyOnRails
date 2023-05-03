@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
       HST: @customer.province.HST
     )
 
-    # loop through all the cart items and genereate orderProduct entries
+    # loop through all the cart items and genereate OrderProduct entries
     if @order.save
       session[:cart].each do | prod_id, qty |
         new_order_prod = OrderProduct.new(
@@ -27,9 +27,17 @@ class OrdersController < ApplicationController
           price: Product.find(prod_id.to_i).price
         )
         new_order_prod.save
-        @picklist = session[:cart]
+
+        # save the cart in picklist
+        @picklist = session[:cart].clone
+
+        # get the products in the cart
         @picklist_products = Product.find(@picklist.keys)
-        # session[:cart] = nil
+
+        # empty the cart
+        session[:cart] = nil
+
+        redirect_to thankyou_path
       end
     else
       redirect_to root_path, notice: "CANNOT SAVE ORDER."
@@ -59,8 +67,10 @@ class OrdersController < ApplicationController
 
   # POST /orders or /orders.json
   def create
+    # create new order with the params in the form
     @order = Order.new(order_params)
 
+    # loop through the cart items and save to OrderProducts
     if @order.save
       session[:cart].each do | prod_id, qty |
         new_order_prod = OrderProduct.new(
@@ -71,6 +81,8 @@ class OrdersController < ApplicationController
         )
       new_order_prod.save
       end
+
+      # empty the cart
       session[:cart] = nil
       redirect_to order_url(@order), notice: "Order was successfully created."
     else

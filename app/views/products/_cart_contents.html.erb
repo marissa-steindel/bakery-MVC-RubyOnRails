@@ -15,9 +15,9 @@
       <% @cart_contents.each do |p|%>
         <tr>
           <td>
-            <%# <% if p.image.present? > %>
-              <%# <%= image_tag p.image.variant(resize_to_fit: [50,50]) > %>
-            <%# <% end > %>
+            <% if p.image.present? %>
+              <%= image_tag p.image, size: 50 %>
+            <% end %>
           </td>
           <td>
             <p class="py-2"><%= p.name %></p>

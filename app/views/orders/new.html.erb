@@ -1,54 +1,24 @@
 <h1 class="title">New Order</h1>
 <h3 class="title is-4">Order Review</h3>
 
+<% unless session[:customer_id].nil? %>
+  <div class="mb-3">
+    <h2 class="title is-6 mb-0">Confirm Shipping Address:</h2>
+    <p class="has-text-weight-bold"><%= @customer.name%></p>
+    <p><%= @customer.address%></p>
+    <p><%= @customer.province.name%></p>
+    <p class="mt-2 mb-3">Not your address? <%= link_to "Update Address", edit_customer_path(@customer) %></p>
+  </div>
+<% else %>
+  <div class="block">
+    <p>Already have an account? <%= link_to "Log In", show_login_form_path %></p>
+    <p><%= link_to "Sign Up", new_customer_path %> to save your shipping information.</p>
+  </div>
+<% end %>
+
+<%# cart contents %>
+<%= render "products/cart_contents", show_taxes: true %>
+<%= link_to "Clear Cart", clear_cart_path, class:"button is-danger is-light is-outlined" %></p>
+
+
 <%= render "form", order: @order %>
-<br>
-<div>
-  <%= link_to "Back to orders", orders_path %>
-</div>
-
-    <h3 class="title is-6 mb-3 pt-3">Shopping Cart:</h3>
-    <table class="table is-striped">
-      <tr>
-        <th></th>
-        <th>Item</th>
-        <th class="has-text-centered">QTY</th>
-        <th class="has-text-centered">Unit Price</th>
-      </tr>
-      <% @cart_contents.each do |p|%>
-        <tr>
-          <td>
-            <%# <% if p.image.present? > %>
-              <%# <%= image_tag p.image.variant(resize_to_fit: [50,50]) > %>
-            <%# <% end > %>
-          </td>
-          <td>
-            <p class="py-2"><%= p.name %></p>
-          </td>
-          <td class="has-text-centered">
-            <p class="px-3 py-2" ><%= session[:cart][p.id.to_s]%></p>
-          </td>
-          <td>
-            <p class="py-2"><%= number_to_currency p.price.to_i/100.0  %></p>
-          </td>
-        </tr>
-      <% end %>
-      <tr class="">
-        <td></td>
-        <td></td>
-        <td><strong class="title is-6">Subtotal:</strong></td>
-        <td><%= number_to_currency @cart_subtotal %></td>
-      </tr>
-    </table>
-
-<%=@cart.inspect%>
-
-<p class="title is-5"><%= @customer.name.capitalize%> of <%= @customer.province.name%></p>
-<p>GST Rate: <%= number_to_percentage @customer.province.GST, precision: 1 %></p>
-<p>PST Rate: <%= number_to_percentage @customer.province.PST, precision: 1 %></p>
-<p>HST Rate: <%= number_to_percentage @customer.province.HST, precision: 1 %></p>
-<br>
-
-<p>Order GST: <%= number_to_currency @GST_due%></p>
-<p>Order PST: <%= number_to_currency @PST_due%></p>
-<p>Order HST: <%= number_to_currency @HST_due%></p>

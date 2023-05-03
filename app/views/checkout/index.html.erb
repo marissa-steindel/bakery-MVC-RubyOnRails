@@ -3,10 +3,10 @@
 <% unless session[:customer_id].nil? %>
   <div class="mb-3">
     <h2 class="title is-6 mb-0">Confirm Shipping Address:</h2>
-    <p class="mt-2 mb-3">Not your address? <%= link_to "Update Address", edit_customer_path(@customer) %></p>
     <p class="has-text-weight-bold"><%= @customer.name%></p>
     <p><%= @customer.address%></p>
     <p><%= @customer.province.name%></p>
+    <p class="mt-2 mb-3">Not your address? <%= link_to "Update Address", edit_customer_path(@customer) %></p>
   </div>
 <% else %>
   <div class="block">

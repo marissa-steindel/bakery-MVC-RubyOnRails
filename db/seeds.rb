@@ -62,13 +62,19 @@ product_json_data.each do |p|
   puts "Price: #{p["price"]}"
   puts "Description: #{p["description"]}"
   puts "Categories: #{p["categories"]}"
+  puts "Image: #{p["img"]}"
   puts
 
   new_prod = Product.create(
     name:         p["name"],
     price:        p["price"].to_i,
-    description:  p["description"]
+    description:  p["description"],
+    # image:        p["img"]
   )
+  new_prod.image.attach(
+      io: File.open("app/assets/images/products/#{p["img"]}"),
+      filename: p["img"]
+    )
 end
 
 

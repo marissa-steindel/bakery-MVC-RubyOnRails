@@ -3,66 +3,77 @@
     "name": "Rustic Sourdough",
     "price" : 650,
     "description" : "Made with the sourdough starter passed down from generation to generation. Chewy, dense crumb on the inside, crusty on the outside. Enjoy with butter.",
-    "categories": ["loaf", "savoury"]
+    "categories": ["loaf", "savoury"],
+    "img":"amy-humphries-nAWiISqWFPs-unsplash.jpg"
   },
   {
     "name":"Flax & Pepitas",
     "price":650,
     "description":"Crunchy with nutty notes. Get in your extra fibre in the most delicious way. Enjoy toasted for extra crunch. The ultimate base for avocado toast.",
-    "categories": ["loaf", "savoury"]
+    "categories": ["loaf", "savoury"],
+    "img":"ddp-HJ3tXZpY1Qw-unsplash.jpg"
   },
   {
     "name":"Jalepeno Cheddar",
     "price":650,
     "description":"The bread that bites back. Feel the heat and melt into this cheesy combo.",
-    "categories": ["loaf", "savoury"]
+    "categories": ["loaf", "savoury"],
+    "img":"helen-oreshchenko-aIs8yQ53MgM-unsplash.jpg"
   },
   {
     "name": "Chocolate Cherry Hazelnut Loaf",
     "price":650,
     "description":"Cozy up to this dense loaf with decadent chocolate chunks and the nutty crunch of toasted hazelnuts. Enjoy toasted with a pat of melted butter.",
-    "categories": ["loaf", "sweet"]
+    "categories": ["loaf", "sweet"],
+    "img":"leiliane-fagundes-0sTX2h8FpXk-unsplash.jpg"
   },
   {
     "name":"Lemon Crinkle Cookie",
     "price":100,
     "description":"A soft chewy center zippy with lemon tang hides beneath the crackly, sugar dusted crust.",
-    "categories": ["cookie", "sweet"]
+    "categories": ["cookie", "sweet"],
+    "img":"biscuits-g8f2a0c828_640.jpg"
   },
   {
     "name":"Blackbery Hand Pie",
     "price":475,
     "description": "The pop tart of your dreams. This week's hand pie is bursting with blackberry preserves and drizzled with blackberry icing.",
-    "categories": ["pastry", "sweet"]
+    "categories": ["pastry", "sweet"],
+    "img":"Blackberry-Hand-Pies-8.jpg"
   },
   {
     "name":"Blueberry Peach Gallette",
     "price":350,
     "description": "Preserved peaches and blueberries from last summer's harvest will have you dreaming of a fragrant summer breeze.",
-    "categories": ["pastry", "sweet"]
+    "categories": ["pastry", "sweet"],
+    "img":"jane-yokata-ZNtT8W11HFQ-unsplashcrop.jpg"
   },
   {
     "name":"Parm Spinach Spiral",
     "price":150,
     "description":"Tender spinach is punctuated with sharp cheesy notes of parmigiano reggiano in this savoury pastry.",
-    "categories": ["pastry", "savoury"]
+    "categories": ["pastry", "savoury"],
+    "img":"lecoquin-foods-74u78crHyeI-unsplashcrop.jpg"
   },
   {
     "name":"Flatbread",
     "price":125,
     "description":"This Meditteranean-inspired flatbread is great for enrobing kabobs or complementing a mezze platter with hummus, labneh, and olives.",
-    "categories": ["flatbread", "savoury"]
+    "categories": ["flatbread", "savoury"],
+    "img":"sweetyoga-justine--C93EET79kU-unsplash.jpg"
   },
   {
     "name":"Choco Chip Cookie",
     "price":100,
     "description":"The classic chocolate chip cookie. Warm. Gooey. Chocolatey. Need we say more?",
-    "categories": ["cookie", "sweet"]
+    "categories": ["cookie", "sweet"],
+    "img":"amirali-mirhashemian-x6VuEH2npHw-unsplash.jpg"
   },
   {
     "name":"Cinnamon Bun",
     "price":250,
     "description":"Comfort food at it's finest. Warm your heart with this stick to your ribs bun full of gooey goodness.",
-    "categories": ["bun","sweet"]
+    "categories": ["bun","sweet"],
+    "img":"rob-sarmiento-RbqgLewxyXo-unsplash.jpg"
   }
 ]

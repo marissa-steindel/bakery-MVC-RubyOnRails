@@ -25,6 +25,11 @@
   </div>
 
   <div class="mb-3">
+    <%= form.label :image, class:"label" %>
+    <%= form.file_field :image %>
+  </div>
+
+  <div class="mb-3">
     <%= form.label :category, "Add Another Category", class:"label" %>
     <div class="select">
       <%= form.select :category, options_from_collection_for_select(Category.all,'id','name'), prompt:"select category"%>

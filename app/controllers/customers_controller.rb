@@ -26,7 +26,7 @@ class CustomersController < ApplicationController
 
     if @customer.save
       session[:customer_id] = @customer.id
-      redirect_to customer_path(@customer), notice: "#{@customer.name}, thank you for creating an account."
+      redirect_to customer_path(@customer), notice: "#{@customer.name.capitalize}, thank you for creating an account."
     else
       render :new, status: :unprocessable_entity
     end
@@ -35,7 +35,7 @@ class CustomersController < ApplicationController
   # PATCH/PUT /customers/1 or /customers/1.json
   def update
     if @customer.update(customer_params)
-      redirect_to customer_path(@customer), notice: "#{@customer.name} was successfully updated."
+      redirect_to customer_path(@customer), notice: "#{@customer.name.capitalize} was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -45,7 +45,7 @@ class CustomersController < ApplicationController
   def destroy
     @customer.destroy
 
-    redirect_to customers_url, notice: "#{@customer.name} was successfully destroyed."
+    redirect_to customers_url, notice: "#{@customer.name.capitalize} was successfully destroyed."
   end
 
   def login
@@ -56,9 +56,8 @@ class CustomersController < ApplicationController
     if customer.present?
     # if customer.present? && customer.authenticate(params[:password])
       session[:customer_id] = customer.id
-      redirect_to root_path, notice: "Logged in"
     else
-      flash[:alert] = "Invalid email or password."
+      flash[:alert] = "Invalid username or password."
       render :login
     end
   end

@@ -4,36 +4,38 @@
 
 <div>
   <p>
-    <strong>Customer:</strong>
+    <strong>Customer:  </strong>
     <%= link_to @order.customer.name, @order.customer %>
   </p>
 
   <p>
-    <strong>Order ID:</strong>
+    <strong>Order ID:  </strong>
     <%= @order.id %>
   </p>
 
   <p>
-    <strong>Payment ID:</strong>
+    <strong>Payment ID:  </strong>
     <%= @order.payment_id %>
   </p>
   <p>
-    <strong>Status:</strong>
+    <strong>Status:  </strong>
     <%= @order.status %>
   </p>
 
+  <br>
+
   <p>
-    <strong>GST:</strong>
+    <strong>GST:  </strong>
     <%= @order.GST %>
   </p>
 
   <p>
-    <strong>PST:</strong>
+    <strong>PST:  </strong>
     <%= @order.PST %>
   </p>
 
   <p>
-    <strong>HST:</strong>
+    <strong>HST:  </strong>
     <%= @order.HST %>
   </p>
 
@@ -45,7 +47,6 @@
     <th>Product</th>
     <th>Quantity</th>
     <th>Unit Price</th>
-    <th></th>
   </thead>
 
 
@@ -54,35 +55,7 @@
       <td><%= op.product.name %></td>
       <td><%= op.qty %></td>
       <td><%= number_to_currency op.price/100.0 %> </td>
-      <td> = <%= number_to_currency op.qty * op.price/100.0 %></td>
     </tr>
   <% end %>
 
-  <tr></tr>
-  <tr>
-    <% unless @order.GST == 0 %>
-      <td class="has-text-centered">GST @ <%= number_to_percentage @order.GST, precision:0 %></td>
-    <% end %>
-  </tr>
-
-  <tr>
-    <% unless @order.PST == 0 %>
-      <td class="has-text-centered">PST @ <%= number_to_percentage @order.PST, precision:0 %></td>
-    <% end %>
-  </tr>
-
-  <tr>
-    <% unless @order.HST == 0 %>
-      <td class="has-text-centered">HST @ <%= number_to_percentage @order.HST, precision:0 %></td>
-    <% end %>
-  </tr>
-
 </table>
-
-
-<div>
-  <%= link_to "Edit this Order", edit_order_path(@order) %> |
-  <%= link_to "Back to Orders", orders_path %>
-
-  <%= button_to "Destroy this Order", @order, method: :delete %>
-</div>

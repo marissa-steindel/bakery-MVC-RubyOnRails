@@ -1,14 +1,11 @@
 <p style="color: green"><%= notice %></p>
 
-<div class="column is-3 card mx-5 my-5">
-  <%# render @product %>
-  <%= render partial: 'product',
-             locals: {show_page: true, product: @product} %>
-</div>
+<%# render @product %>
+<%= render partial: 'product',
+    locals: {show_page: true, product: @product} %>
 
 <div>
-  <%= link_to "Edit this product", edit_product_path(@product) %> |
-  <%= link_to "Back to products", products_path %>
-
-  <%= button_to "Destroy this product", @product, method: :delete %>
+  <%#= link_to "Edit this product", edit_product_path(@product) %>
+  <%#= link_to "Back to products", products_path %>
+  <%#= button_to "Destroy this product", @product, method: :delete %>
 </div>

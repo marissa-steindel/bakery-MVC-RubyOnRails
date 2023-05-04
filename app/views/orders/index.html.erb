@@ -2,7 +2,7 @@
 
 <h1 class="title">Orders</h1>
 
-<%= link_to "New order", new_order_path, class:"button" %>
+<%#= link_to "New order", new_order_path, class:"button" %>
 
 <table class="table is-striped">
 <tr>
@@ -14,8 +14,6 @@
   <th>GST</th>
   <th>HST</th>
   <th>PST</th>
-  <th></th>
-  <th></th>
   <th></th>
   <th></th>
 </tr>
@@ -33,9 +31,21 @@
       <td><%= o.created_at.strftime('%m/%d/%Y %H:%M') %></td>
       <td><%= o.payment_id %></td>
       <td><%= link_to o.customer.name, o.customer %></td>
-      <td><%= number_to_percentage o.GST, precision:1 %></td>
-      <td><%= number_to_percentage o.PST, precision:1 %></td>
-      <td><%= number_to_percentage o.HST, precision:1 %></td>
+      <% unless o.GST == 0 %>
+        <td class="has-text-centered"><%= number_to_percentage o.GST, precision:0 %></td>
+      <% else %>
+        <td class="has-text-centered">-</td>
+      <% end %>
+      <% unless o.PST == 0 %>
+        <td class="has-text-centered"><%= number_to_percentage o.PST, precision:0 %></td>
+      <% else %>
+        <td class="has-text-centered">-</td>
+      <% end %>
+      <% unless o.HST == 0 %>
+        <td class="has-text-centered"><%= number_to_percentage o.HST, precision:0 %></td>
+      <% else %>
+        <td class="has-text-centered">-</td>
+      <% end %>
       <td><%= link_to "EDIT", edit_order_path(o.id) %></td>
       <td><%= link_to "DELETE", order_path(o.id), data: { turbo_method: :delete, turbo_confirm: "Delete?" }, class: "button is-small" %></td>
     </tr>

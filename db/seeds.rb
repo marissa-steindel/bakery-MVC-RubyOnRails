@@ -46,7 +46,7 @@ end
 end
 
 # SEED categories
-categories = ["loaf", "sweet", "savoury", "pastry", "cookie", "cake", "muffin", "bun", "flatbread"]
+categories = ["loaf", "sweet", "savoury", "pastry", "cookie", "bun", "flatbread"]
 
 categories.each do |c|
   new_cat = Category.create(name: c)

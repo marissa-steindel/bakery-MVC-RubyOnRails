@@ -5,22 +5,20 @@
             locals: {purpose: "read", customer: @customer} %>
 
 <br>
-<br>
-<br>
 <% unless @customer.orders.blank?%>
   <p class="title is-5 my-1">Orders</p>
   <% @customer.orders.each do |o| %>
     <p>
       <%= link_to o.id, order_path(o.id), class:"mr-3" %> <%= o.created_at %>
     </p>
-    <br>
   <% end %>
 <% end %>
 
-<br>
 <div>
-  <%= link_to "Edit this Customer", edit_customer_path(@customer) %> |
-  <%= link_to "Back to Customers Index", customers_path %>
-
-  <%= button_to "Delete Customer", @customer, method: :delete %>
+  <br>
+  <%= link_to "Update Address", edit_customer_path(@customer) %>
+  <%#= link_to "Back to Customers Index", customers_path %>
+  <br>
+  <br>
+  <%= button_to "Delete Account", @customer, method: :delete %>
 </div>

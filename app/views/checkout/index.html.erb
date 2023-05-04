@@ -1,12 +1,22 @@
 <h3 class="title is-4">Checkout</h3>
 
-<% unless session[:customer_id].nil? %>
+<% unless session[:customer_id].blank? || session[:customer_id].nil?  %>
   <div class="mb-3">
     <h2 class="title is-6 mb-0">Confirm Shipping Address:</h2>
     <p class="has-text-weight-bold"><%= @customer.name%></p>
     <p><%= @customer.address%></p>
     <p><%= @customer.province.name%></p>
     <p class="mt-2 mb-3">Not your address? <%= link_to "Update Address", edit_customer_path(@customer) %></p>
+  </div>
+
+  <%# cart contents %>
+  <%= render "products/cart_contents", show_taxes: true %>
+
+
+  <div class="block is-flex">
+    <%= link_to "Place Order", invoice_path, class:"button mr-4 is-success is-light is-outlined" %></p>
+    <%#= link_to "Create New Order", new_order_path, class:"button mr-4 is-success is-light is-outlined" %></p>
+    <%= link_to "Clear Cart", clear_cart_path, class:"button is-danger is-light is-outlined" %></p>
   </div>
 <% else %>
   <div class="block">
@@ -15,14 +25,6 @@
   </div>
 <% end %>
 
-<%# cart contents %>
-<%= render "products/cart_contents", show_taxes: true %>
 
-
-<div class="block is-flex">
-  <%= link_to "Place Order", invoice_path, class:"button mr-4 is-success is-light is-outlined" %></p>
-  <%#= link_to "Create New Order", new_order_path, class:"button mr-4 is-success is-light is-outlined" %></p>
-  <%= link_to "Clear Cart", clear_cart_path, class:"button is-danger is-light is-outlined" %></p>
-</div>
 
 

@@ -1,7 +1,7 @@
 <h1 class="title">New Order</h1>
 <h3 class="title is-4">Order Review</h3>
-
-<% unless session[:customer_id].nil? %>
+<%= session[:customer_id] %>
+<% unless session[:customer_id].present? %>
   <div class="mb-3">
     <h2 class="title is-6 mb-0">Confirm Shipping Address:</h2>
     <p class="has-text-weight-bold"><%= @customer.name%></p>

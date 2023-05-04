@@ -4,6 +4,9 @@
   </a>
 </div>
 
+<%# <p>session[:cart]:  <%= session[:cart].inspect ></p> %>
+<%# <p>session[:customer_id]:  <%= session[:customer_id].inspect ></p> %>
+
 <nav class="navbar is-primary">
   <%= link_to "Home", root_path, :class=>"navbar-item" %>
   <%= link_to "About", about_path, :class=>"navbar-item" %>
@@ -12,7 +15,7 @@
   <%# link_to "Admin", admin_root_path, :class=>"navbar-item" %>
 
   <%# display number of items in cart %>
-  <% if session[:cart].present? %>
+  <% unless session[:cart].empty? %>
     <%= link_to "Checkout [#{session[:cart].values.sum}]", checkout_path, :class=>"navbar-item" %>
   <% end %>
 

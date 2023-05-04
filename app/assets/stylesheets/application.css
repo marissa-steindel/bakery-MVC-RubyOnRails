@@ -66,11 +66,8 @@ p, a.navbar-item, title, h2, h3
   font-family: 'Urbanist', sans-serif;
 }
 
-div#picbanner img
+#picbanner img
 {
-  width: 100px;
-  height: 100px;
-  margin: 0px 2px;
   box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.5);
 }
 

@@ -8,6 +8,8 @@ class CheckoutController < ApplicationController
   end
 
   def thankyou
+    @order = Order.last
+    @order_products = OrderProduct.where(order_id: @order.id)
   end
 
   private

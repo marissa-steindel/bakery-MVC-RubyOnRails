@@ -4,3 +4,25 @@
 
 <%# cart contents %>
 <%# <%= render "products/cart_contents", show_taxes: true > %>
+<%#= @order.inspect %>
+
+<table class="table is-striped my-4">
+  <thead>
+    <th></th>
+    <th>Product</th>
+    <th>Quantity</th>
+  </thead>
+
+  <% @order_products.each do |op| %>
+    <tr>
+      <td>
+        <% if op.product.image.present? %>
+          <%= image_tag op.product.image, size: 50 %>
+        <% end %>
+      </td>
+      <td><%= op.product.name %></td>
+      <td class="has-text-centered"><%= op.qty %></td>
+    </tr>
+  <% end %>
+
+</table>

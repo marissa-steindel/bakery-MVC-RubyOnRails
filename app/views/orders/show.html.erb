@@ -60,13 +60,21 @@
 
   <tr></tr>
   <tr>
-    <td>GST @ <%= number_to_percentage @order.GST, precision: 1 %></td>
+    <% unless @order.GST == 0 %>
+      <td class="has-text-centered">GST @ <%= number_to_percentage @order.GST, precision:0 %></td>
+    <% end %>
   </tr>
+
   <tr>
-    <td>PST @ <%= number_to_percentage @order.PST, precision: 1 %></td>
+    <% unless @order.PST == 0 %>
+      <td class="has-text-centered">PST @ <%= number_to_percentage @order.PST, precision:0 %></td>
+    <% end %>
   </tr>
+
   <tr>
-    <td>HST @ <%= number_to_percentage @order.HST, precision: 1 %></td>
+    <% unless @order.HST == 0 %>
+      <td class="has-text-centered">HST @ <%= number_to_percentage @order.HST, precision:0 %></td>
+    <% end %>
   </tr>
 
 </table>

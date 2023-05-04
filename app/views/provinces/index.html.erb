@@ -24,7 +24,11 @@
         </td>
         <td>
           <% unless p.PST.nil? || p.PST == 0 %>
-            <p><%= p.PST.to_i %>%</p>
+            <% if p.code == "QC" %>
+              <p><%= p.PST %>%</p>
+            <% else %>
+              <p><%= p.PST.to_i %>%</p>
+            <% end %>
           <%else%>
             <p>-</p>
           <% end %>

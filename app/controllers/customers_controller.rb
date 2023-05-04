@@ -63,7 +63,7 @@ class CustomersController < ApplicationController
       end
     else
       flash[:alert] = "Invalid username or password."
-      render :login
+      redirect_to show_login_form_path, notice: "Invalid username or password."
     end
   end
 

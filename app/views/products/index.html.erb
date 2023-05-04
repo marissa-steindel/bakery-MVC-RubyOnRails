@@ -3,19 +3,21 @@
 <h1 class="title has-text-centered">Products</h1>
 
 
-<%# display cart contents %>
-<%= render "cart_contents", show_taxes: false %>
+<div class="is-flex is-flex-direction-column is-align-items-center">
+  <%# display cart contents %>
+  <%= render "cart_contents", show_taxes: false %>
 
-<%# display checkout button %>
-<div class="block is-flex">
-  <% unless @cart_contents.empty?%>
-    <% if session[:customer_id].nil? %>
-      <%= link_to "Checkout", show_login_form_path, class:"button mr-4 is-success is-light is-outlined" %></p>
-    <% else %>
-      <%= link_to "Checkout", checkout_path, class:"button mr-4 is-success is-light is-outlined" %></p>
+  <%# display checkout button %>
+  <div class="block is-flex">
+    <% unless @cart_contents.empty?%>
+      <% if session[:customer_id].nil? %>
+        <%= link_to "Checkout", show_login_form_path, class:"button mr-4 is-success is-light is-outlined" %></p>
+      <% else %>
+        <%= link_to "Checkout", checkout_path, class:"button mr-4 is-success is-light is-outlined" %></p>
+      <% end %>
+      <%= link_to "Clear Cart", clear_cart_path, class:"button is-danger is-light is-outlined" %></p>
     <% end %>
-    <%= link_to "Clear Cart", clear_cart_path, class:"button is-danger is-light is-outlined" %></p>
-  <% end %>
+  </div>
 </div>
 
 <%# display products %>

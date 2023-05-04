@@ -37,10 +37,17 @@
   padding-left: 50px;
 }
 
+body
+{
+  background-color: #989398;
+  font-family: 'Urbanist', sans-serif;
+}
+
 .title
 {
   font-family: 'Fredericka the Great', sans-serif;
 }
+
 
 .specials h1
 {
@@ -60,11 +67,6 @@
   margin-bottom: 3px;
 }
 
-body
-{
-  background-color: #989398;
-  font-family: 'Urbanist', sans-serif;
-}
 
 p, a.navbar-item, a.navbar-link, title, h2, h3
 {
@@ -115,6 +117,11 @@ p, a.navbar-item, a.navbar-link, title, h2, h3
   box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.5);
 }
 
+.specials .row p
+{
+    max-width: 380px;
+}
+
 footer
 {
   background-color: #3a353b;
@@ -133,10 +140,6 @@ footer div#address p:first-of-type
     border-left: none;
 }
 
-.row p
-{
-    max-width: 380px;
-}
 
 @media(max-width: 640px)
 {

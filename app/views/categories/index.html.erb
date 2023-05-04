@@ -1,9 +1,13 @@
-<p style="color: green"><%= notice %></p>
+<div class="is-flex is-flex-direction-column is-align-items-center">
+  <div>
+    <p style="color: green"><%= notice %></p>
 
-<h1 class="title">Categories</h1>
+    <h1 class="title">Categories</h1>
 
-<%#= link_to "New category", new_category_path, class:"button" %>
+    <%#= link_to "New category", new_category_path, class:"button" %>
 
-<%= render partial: 'category',
-            collection: @categories,
-            locals: {show_page: false} %>
+    <%= render partial: 'category',
+                collection: @categories,
+                locals: {show_page: false} %>
+  </div>
+</div>

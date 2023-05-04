@@ -29,16 +29,16 @@ class OrdersController < ApplicationController
         new_order_prod.save
 
         # save the cart in picklist
-        @picklist = session[:cart].clone
+        # @picklist = session[:cart].clone
 
         # get the products in the cart
-        @picklist_products = Product.find(@picklist.keys)
+        # @picklist_products = Product.find(@picklist.keys)
 
         # empty the cart
         session[:cart] = nil
-
-        redirect_to thankyou_path
       end
+
+      redirect_to thankyou_path
     else
       redirect_to root_path, notice: "CANNOT SAVE ORDER."
     end

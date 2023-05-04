@@ -7,7 +7,7 @@
 <%# <p>session[:cart]:  <%= session[:cart].inspect ></p> %>
 <%# <p>session[:customer_id]:  <%= session[:customer_id].inspect ></p> %>
 
-<nav class="navbar is-primary">
+<nav class="navbar is-primary" id="main-navbar">
   <%= link_to "Home", root_path, :class=>"navbar-item" %>
   <%= link_to "About", about_path, :class=>"navbar-item" %>
   <%= link_to "Specials", specials_path, :class=>"navbar-item" %>
@@ -30,7 +30,7 @@
 
 </nav>
 
-<nav class="navbar is-warning">
+<nav class="navbar is-warning" id="models-navbar">
     <%= link_to "Products Collection", products_path, :class=>"navbar-item" %>
     <%= link_to "Categories Collection", categories_path, :class=>"navbar-item" %>
     <%= link_to "Provinces Collection", provinces_path, :class=>"navbar-item" %>

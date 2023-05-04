@@ -37,6 +37,11 @@
   padding-left: 50px;
 }
 
+.title
+{
+  font-family: 'Fredericka the Great', sans-serif;
+}
+
 .specials h1
 {
   font-family: 'Fredericka the Great', sans-serif;
@@ -61,9 +66,43 @@ body
   font-family: 'Urbanist', sans-serif;
 }
 
-p, a.navbar-item, title, h2, h3
+p, a.navbar-item, a.navbar-link, title, h2, h3
 {
   font-family: 'Urbanist', sans-serif;
+}
+
+#main-navbar
+{
+  background-color: #3a353b;
+}
+
+#main-navbar a.navbar-item
+{
+  color: #fdf3e4;
+  /* font-family: 'Fredericka the Great', sans-serif; */
+}
+
+#main-navbar a.navbar-item:hover
+{
+  color: #3a353b;
+  background-color: #989398;
+}
+
+#models-navbar, #models-navbar div.navbar-dropdown
+{
+  background-color: #564f57;
+}
+
+#models-navbar a.navbar-item, #models-navbar a.navbar-link
+{
+  color: #fdf3e4;
+  /* font-family: 'Fredericka the Great', sans-serif; */
+}
+
+#models-navbar a.navbar-item:hover, #models-navbar a.navbar-link:hover
+{
+  color: #3a353b;
+  background-color: #6d6a6d;
 }
 
 #picbanner img

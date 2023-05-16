@@ -78,7 +78,7 @@ p, a.navbar-item, a.navbar-link, title, h2, h3
   background-color: #3a353b;
 }
 
-#main-navbar a.navbar-item
+#main-navbar a.navbar-item, #main-navbar p.navbar-item
 {
   color: #fdf3e4;
   /* font-family: 'Fredericka the Great', sans-serif; */

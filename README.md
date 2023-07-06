@@ -9,7 +9,7 @@ Demonstrates:
 - E-commerce
 - Styling
 
-# Preview
+## Preview
 ![Crust & Crumb Bakery Website](/lib/assets/images/specials.JPG)
 <br>
 <br>
@@ -18,5 +18,5 @@ Demonstrates:
 <br>
 <br>
 
-# Database Design
+## Database Design
 ![ERD](/lib/assets/images/ERD.JPG)

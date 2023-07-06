@@ -1,3 +1,3 @@
 # Crust & Crumb Bakery
 
-![Crust & Crumb Bakery Website](/assets/images/electrocat.png)
+![Crust & Crumb Bakery Website](/lib/assets/crustncrumb.JPG)

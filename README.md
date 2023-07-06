@@ -1,4 +1,4 @@
-# ![Crust & Crumb](https://crustandcrumb.onrender.com/)
+# [Crust & Crumb](https://crustandcrumb.onrender.com/)
 
 E-commerce application for a fictional bakery client, featuring MVC architecutre.
 
@@ -9,4 +9,4 @@ Demonstrates:
 - E-commerce
 - Styling
 
-![Crust & Crumb Bakery Website](/lib/assets/images/crustncrumb.JPG)
+![Crust & Crumb Bakery Website](/lib/assets/images/specials.JPG)

@@ -16,5 +16,6 @@ Demonstrates:
 
 <br>
 <br>
+
 **Database Design**
 ![ERD](/lib/assets/images/ERD.JPG)

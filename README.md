@@ -1,3 +1,12 @@
-# Crust & Crumb Bakery
+# ![Crust & Crumb](https://crustandcrumb.onrender.com/)
 
-![Crust & Crumb Bakery Website](/lib/assets/crustncrumb.JPG)
+E-commerce application for a fictional bakery client, featuring MVC architecutre.
+
+Demonstrates:
+- Database Design
+- Routing
+- Customer Relationship Manager (CRM)
+- E-commerce
+- Styling
+
+![Crust & Crumb Bakery Website](/lib/assets/images/crustncrumb.JPG)
